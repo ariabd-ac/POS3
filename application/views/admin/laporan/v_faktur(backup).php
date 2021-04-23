@@ -1,147 +1,366 @@
-<html lang="en" moznomarginboxes mozdisallowselectionprint>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Faktur Penjualan Barang</title>
+
     <meta charset="utf-8">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/laporan.css')?>"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Produk By Mfikri">
+    <meta name="author" content="">
+
+    <title>Welcome To Point of Sale Apps</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href="<?php echo base_url() . 'assets/css/bootstrap.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/css/style.css' ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/css/font-awesome.css' ?>" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?php echo base_url() . 'assets/css/4-col-portfolio.css' ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/css/dataTables.bootstrap.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/css/jquery.dataTables.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo base_url() . 'assets/dist/css/bootstrap-select.css' ?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap-datetimepicker.min.css' ?>">
+    <style>
+    input.transparent-input{
+       background-color:transparent !important;
+       border:none !important;
+    }
+    </style>
+    <style type="text/css">
+        .bg {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -1;
+            float: left;
+            left: 0;
+            margin-top: -20px;
+        }
+        .jam {
+        font-size: 1em;
+        background-color: transparent;
+        /* border: 2px solid #d35400; */
+        border-radius: 5px;
+        padding: 10px;
+     }
+    </style>
 </head>
-<body onload="window.print()">
-<table style="border-collapse: collapse; width: 96%" border="0">
-<tr>
-<td align="center">
-<table style="border-collapse: collapse; width: 90%;" border="0">
-<tr>
-<td style="text-align: center;">
-<span  style="font-size:  24pt;  font-weight:  bold">Faktur Penjualan</span><br>
-<span  style="font-size:  18pt;  font-weight:  bold;  color: red;">Toko Reni</span><br>
-<span style="font-size: 12pt; font-weight: bold; font-style: italic;">
-Jl. Lubuk Minturun No. 13, Telp: 087890000705
-</span>
 
-</td>
-</tr>
-</table>    
-</td>
-</tr>
-<div id="laporan">
-<table align="center" style="width:700px; border-bottom:3px double;border-top:none;border-right:none;border-left:none;margin-top:5px;margin-bottom:20px;">
-<!--<tr>
-    <td><img src="<?php// echo base_url().'assets/img/kop_surat.png'?>"/></td>
-</tr>-->
-</table>
+<body>
+<img src="<?php echo base_url() . 'assets/img/bg6.jpg' ?>" alt="gambar" class="bg" />
 
-<table border="0" align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:0px;">
-<tr>
-    
-</tr>
-                       
-</table>
-<?php 
-    $b=$data->row_array();
-?>
-<table border="0" align="center" style="width:700px;border:none;">
-        <tr>
-            <th style="text-align:left;">No Faktur</th>
-            <th style="text-align:left;">: <?php echo $b['jual_nofak'];?></th>
-            <th style="text-align:left;">Total</th>
-            <th style="text-align:left;">: <?php echo 'Rp '.number_format($b['jual_total']).',-';?></th>
-        </tr>
-        <tr>
-            <th style="text-align:left;">Tanggal</th>
-            <th style="text-align:left;">: <?php echo $b['jual_tanggal'];?></th>
-            <th style="text-align:left;">Tunai</th>
-            <th style="text-align:left;">: <?php echo 'Rp '.number_format($b['jual_jml_uang']).',-';?></th>
-        </tr>
-        <tr>
-            <th style="text-align:left;">Keterangan</th>
-            <th style="text-align:left;">: <?php echo $b['jual_keterangan'];?></th>
-            <th style="text-align:left;">Kembalian</th>
-            <th style="text-align:left;">: <?php echo 'Rp '.number_format($b['jual_kembalian']).',-';?></th>
-        </tr>
-</table>
+    <!-- Navigation -->
+    <?php
+    $this->load->view('admin/menu');
+    ?>
 
-<table border="1" align="center" style="width:700px;margin-bottom:20px;">
-<thead>
+    <!-- Page Content -->
+    <div class="container">
 
-    <tr>
-        <th style="width:50px;">No</th>
-        <th>Nama Barang</th>
-        <th>Satuan</th>
-        <th>Harga Jual</th>
-        <th>Qty</th>
-        <th>Diskon</th>
-        <th>SubTotal</th>
-    </tr>
-</thead>
-<tbody>
-<?php 
-$no=0;
-    foreach ($data->result_array() as $i) {
-        $no++;
-        
-        $nabar=$i['d_jual_barang_nama'];
-        $satuan=$i['d_jual_barang_satuan'];
-        
-        $harjul=$i['d_jual_barang_harjul'];
-        $qty=$i['d_jual_qty'];
-        $diskon=$i['d_jual_diskon'];
-        $total=$i['d_jual_total'];
-?>
-    <tr>
-        <td style="text-align:center;"><?php echo $no;?></td>
-        <td style="text-align:left;"><?php echo $nabar;?></td>
-        <td style="text-align:center;"><?php echo $satuan;?></td>
-        <td style="text-align:right;"><?php echo 'Rp '.number_format($harjul);?></td>
-        <td style="text-align:center;"><?php echo $qty;?></td>
-        <td style="text-align:right;"><?php echo 'Rp '.number_format($diskon);?></td>
-        <td style="text-align:right;"><?php echo 'Rp '.number_format($total);?></td>
-    </tr>
-<?php }?>
-</tbody>
-<tfoot>
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <center><?php echo $this->session->flashdata('msg'); ?></center>
+                <h1 class="page-header">Transaksi
+                    <small>Penjualan (Grosir)</small>
+                    <a href="#" data-toggle="modal" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="<?php echo base_url() . 'admin/penjualan_grosir/add_to_cart' ?>" method="post">
+                <table>
+                <tr>
+                <th style="width:100px;padding-bottom:5px;">Kasir</th>
+                <th style=""> : </th>
+                    <th style="width:300px;padding-bottom:5px;">
+                    <input type="text" name="nkasir" id="nkasir" value="Budiono" class="form-control transparent-input" style="width:200px;" required>
+                    </th>
+                    <tr>
+                    <th>Jam</th>
+                    <th> : </th>
+                    <th><div class="jam"></div></th>
+                </tr>
+                </tr>
+                </table>
+                    <table>
+                        <tr>
+                            <th>Kode Barang</th>
+                        </tr>
+                        <tr>
+                            <!-- <th><input type="text" name="kode_brg" id="kode_brg" class="form-control input-sm"></th> -->
+                            <th><input type="text" name="kode_barcode" id="kode_barcode" class="form-control input-sm"></th>
+                        </tr>
+                        <div id="detail_barang" style="position:absolute;">
+                        </div>
+                    </table>
+                </form>
+                <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
+                    <thead>
+                        <tr>
+                            <th>Kode Barang</th>
+                            <th>Nama Barang</th>
+                            <th style="text-align:center;">Satuan</th>
+                            <th style="text-align:center;">Harga(Rp)</th>
+                            <th style="text-align:center;">Diskon(Rp)</th>
+                            <th style="text-align:center;">Qty</th>
+                            <th style="text-align:center;">Sub Total</th>
+                            <th style="width:100px;text-align:center;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($this->cart->contents() as $items) : ?>
+                            <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
+                            <tr>
+                                <td><?= $items['id']; ?></td>
+                                <td><?= $items['name']; ?></td>
+                                <td style="text-align:center;"><?= $items['satuan']; ?></td>
+                                <td style="text-align:right;"><?php echo number_format($items['amount']); ?></td>
+                                <td style="text-align:right;"><?php echo number_format($items['disc']); ?></td>
+                                <td style="text-align:center;"><?php echo number_format($items['qty']); ?></td>
+                                <td style="text-align:right;"><?php echo number_format($items['subtotal']); ?></td>
 
-    <tr>
-        <td colspan="6" style="text-align:center;"><b>Total</b></td>
-        <td style="text-align:right;"><b><?php echo 'Rp '.number_format($b['jual_total']);?></b></td>
-    </tr>
-</tfoot>
-</table>
-<table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
-<tr>
-<td>
-<strong>*Selamat Datang Kembali</strong><br>
-<strong>*Barang   yang   sudah   dibeli   tidak dapat   ditukarkan 
-kembali</strong>
-</td>
-</tr>
-    <tr>
-        <td></td>
-</table>
-<table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
-    <tr>
-        <td align="right">tgl, <?php echo date('d-M-Y')?></td>
-    </tr>
-    <tr>
-        <td align="right"></td>
-    </tr>
- 
-    <tr>
-    <td><br/><br/><br/><br/></td>
-    </tr>    
-    <tr>
-        <td align="right">( <?php echo $this->session->userdata('nama');?> )</td>
-    </tr>
-    <tr>
-        <td align="center"></td>
-    </tr>
-</table>
-<table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
-    <tr>
-        <th><br/><br/></th>
-    </tr>
-    <tr>
-        <th align="left"></th>
-    </tr>
-</table>
-</div>
+                                <td style="text-align:center;"><a href="<?php echo base_url() . 'admin/penjualan_grosir/remove/' . $items['rowid']; ?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                            </tr>
+
+                            <?php $i++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <form action="<?php echo base_url() . 'admin/penjualan_grosir/simpan_penjualan_grosir' ?>" method="post">
+                    <table>
+                        <tr>
+                            <td style="width:760px;" rowspan="2"></td>
+                            <th style="width:140px;">Total Belanja(Rp)</th>
+                            <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total()); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
+                            <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total(); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                        </tr>
+                        <tr>
+                            <th>Tunai(Rp)</th>
+                            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <th>Kembalian(Rp)</th>
+                            <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <th></th>
+                            <th style="text-align:right;"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></th>
+                        </tr>
+
+                    </table>
+                </form>
+                <hr />
+            </div>
+            <!-- /.row -->
+            <!-- ============ MODAL ADD =============== -->
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 class="modal-title" id="myModalLabel">Data Barang</h3>
+                        </div>
+                        <div class="modal-body" style="overflow:scroll;height:500px;">
+                        <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;width:40px;">No</th>
+                            <th style="width:120px;">Kode Barang</th>
+                            <th style="width:120px;">Kode Barcode</th>
+                            <th style="width:240px;">Nama Barang</th>
+                            <th>Satuan</th>
+                            <th style="width:100px;">Harga (Grosir)</th>
+                            <th>Stok</th>
+                            <th>Diskon</th>
+                            <th>jumlah</th>
+                            <th style="width:100px;text-align:center;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $a) :
+                            $no++;
+                            $id = $a['barang_id'];
+                            $kode_barcode = $a['barang_kbarcode'];
+                            $nm = $a['barang_nama'];
+                            $satuan = $a['barang_satuan'];
+                            $harpok = $a['barang_harpok'];
+                            $harjul = $a['barang_harjul'];
+                            $harjul_grosir = $a['barang_harjul_grosir'];
+                            $stok = $a['barang_stok'];
+                            $min_stok = $a['barang_min_stok'];
+                            $kat_id = $a['barang_kategori_id'];
+                            $kat_nama = $a['kategori_nama'];
+                        ?>
+                            <tr>
+                                <td style="text-align:center;"><?php echo $no; ?></td>
+                                <td><?php echo $id; ?></td>
+                                <td><?php echo $kode_barcode; ?></td>
+                                <td><?php echo $nm; ?></td>
+                                <td style="text-align:center;"><?php echo $satuan; ?></td>
+                                <td style="text-align:right;"><?php echo 'Rp ' . number_format($harjul_grosir); ?></td>
+                                <td style="text-align:center;"><?php echo $stok; ?></td>
+                                <form action="<?php echo base_url() . 'admin/penjualan_grosir/add_to_cart' ?>" method="post">
+                                    <input type="hidden" name="kode_brg" value="<?php echo $id ?>">
+                                    <input type="hidden" name="kode_barcode" value="<?php echo $kode_barcode ?>">
+                                    <input type="hidden" name="nabar" value="<?php echo $nm; ?>">
+                                    <input type="hidden" name="satuan" value="<?php echo $satuan; ?>">
+                                    <input type="hidden" name="stok" value="<?php echo $stok; ?>">
+                                    <input type="hidden" name="harjul" value="<?php echo number_format($harjul_grosir); ?>">
+                                    <td><input type="number" name="diskon" value="0"></td>
+                                    <td><input type="number" name="qty" value="1" min="1" max="<?php echo $stok; ?>" class="form-control input-sm" style="width:90px;margin-right:5px;" required></td>
+                                    <td>
+                                        <?php
+                                        if ($stok <= 0) { ?>
+                                            <button type="" class="btn btn-xs btn-denger" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="submit" class="btn btn-xs btn-info" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
+                                        <?php
+                                        }
+                                        ?>
+
+                                </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--END MODAL-->
+
+            <hr>
+
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p style="text-align:center;">Copyright &copy; <?php echo 'DL-Tech'; ?> 2020</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </footer>
+
+        </div>
+        <!-- /.container -->
+
+        <!-- jQuery -->
+        <script src="<?php echo base_url() . 'assets/js/jquery.js' ?>"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="<?php echo base_url() . 'assets/dist/js/bootstrap-select.min.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/bootstrap.min.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/dataTables.bootstrap.min.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/jquery.price_format.min.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/moment.js' ?>"></script>
+        <script src="<?php echo base_url() . 'assets/js/bootstrap-datetimepicker.min.js' ?>"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#jml_uang').on("input", function() {
+                    var total = $('#total').val();
+                    var jumuang = $('#jml_uang').val();
+                    var hsl = jumuang.replace(/[^\d]/g, "");
+                    $('#jml_uang2').val(hsl);
+                    $('#kembalian').val(hsl - total);
+                })
+
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#mydata').DataTable();
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                $('.jml_uang').priceFormat({
+                    prefix: '',
+                    //centsSeparator: '',
+                    centsLimit: 0,
+                    thousandsSeparator: ','
+                });
+                $('#jml_uang2').priceFormat({
+                    prefix: '',
+                    //centsSeparator: '',
+                    centsLimit: 0,
+                    thousandsSeparator: ','
+                });
+                $('#kembalian').priceFormat({
+                    prefix: '',
+                    //centsSeparator: '',
+                    centsLimit: 0,
+                    thousandsSeparator: ','
+                });
+                $('.harjul').priceFormat({
+                    prefix: '',
+                    //centsSeparator: '',
+                    centsLimit: 0,
+                    thousandsSeparator: ','
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                //Ajax kabupaten/kota insert
+                $("#kode_barcode").focus();
+                $("#kode_barcode").on("input", function() {
+                    var kobarcode = {
+                        kode_barcode: $(this).val()
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url() . 'admin/penjualan_grosir/get_barangBarcode'; ?>",
+                        data: kobarcode,
+                        success: function(msg) {
+                            $('#detail_barang').html(msg);
+                        }
+                    });
+                });
+
+                $("#kode_barcode").keypress(function(e) {
+                    if (e.keyCode == 27) {
+                        $("#jml_uang2").focus();
+                    }
+                });
+            });
+        </script>
+        <script>
+            const hotKeys = (e) => {
+                let windowEvent = window.event  ?  event : e;
+
+                if(windowEvent.keyCode  === 66 && windowEvent.ctrlKey) {
+                    const jml = document.querySelector('#jml_uang2');
+                    jml.focus();
+                }
+            }
+            document.onkeydowon = hotKeys;
+        </script>
+
+
 </body>
+
 </html>

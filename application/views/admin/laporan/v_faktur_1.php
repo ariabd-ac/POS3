@@ -9,7 +9,7 @@
         margin-top: 0;
     }
     td, th {
-    padding: 2px;
+    padding: 4px;
 }
 
     </style>
@@ -33,28 +33,23 @@
                         <!-- <td style=""> -->
                         <td style="text-align: center;">
 
-                            <span style="font-size:  18pt;  font-weight:  bold;  color: black;">GV MULYA JAYA</span><br>
+                            <span style="font-size:  18pt;  font-weight:  bold;  color: red;">GV MULYA JAYA</span><br>
                             <span style="font-size: 17pt; font-weight: bold; font-style: italic;">
                                 <small style="font-size: small;">
-                                     Perempatan Psr Ketembreng TLP. 0815 6939 118
+                                     Perempatan Psr Ketembreng TLP.0815 6939 118
                                 </small>
                             </span>
 
                         </td>
                     </tr>
-    </table>
+                </table>
             </td>
         </tr>
         <div id="laporan">
-            <table align="center">
-            <tr>
-            <td>
-            <div>
-            ----------------------------------------------------------------------------
-            </div>
-            </td>
-            </tr>
-            
+            <table align="center" style="width:320px; border-bottom:3px double;border-top:none;border-right:none;border-left:none;margin-top:5px;margin-bottom:20px;">
+                <!--<tr>
+    <td><img src="<?php// echo base_url().'assets/img/kop_surat.png'?>"/></td>
+</tr>-->
             </table>
 
             <table border="0" align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:0px;">
@@ -72,35 +67,37 @@
                     <th style="text-align:left;">: <?php echo 'Rp ' . number_format($b['jual_total']) . ',-'; ?></th>
                 </tr> -->
                 <tr>
-                    <th style="text-align:left;font-size: 12px;">Kasir</th>
-                    <th style="text-align:left;font-size: 12px;">: Gading</th>
+                    <th style="text-align:left;font-size: 15px;">Tanggal</th>
+                    <th style="text-align:left;font-size: 15px;">: <?php echo $b['jual_tanggal']; ?></th>
 
                 </tr>
                 <tr>
-                    <th style="text-align:left;font-size: 12px;">Tanggal</th>
-                    <th style="text-align:left;font-size: 12px;">: <?php echo $b['jual_tanggal']; ?></th>
 
-                </tr>
-                <!-- <tr>
-                    <th style="text-align:left;font-size: 12px;">Kembalian</th>
-                    <th style="text-align:left;font-size: 12px;">: <?php echo 'Rp ' . number_format($b['jual_kembalian']) . ',-'; ?></th>
+
+                    <th style="text-align:left;font-size: 15px;">Kembalian</th>
+                    <th style="text-align:left;font-size: 15px;">: <?php echo 'Rp ' . number_format($b['jual_kembalian']) . ',-'; ?></th>
                 </tr>
                 <tr>
-                    <th style="text-align:left;font-size: 12px;">Tunai</th>
-                    <th style="text-align:left;font-size: 12px;">: <?php echo 'Rp ' . number_format($b['jual_jml_uang']) . ',-'; ?></th>
-                </tr> -->
+                    <th style="text-align:left;font-size: 15px;">Tunai</th>
+                    <th style="text-align:left;font-size: 15px;">: <?php echo 'Rp ' . number_format($b['jual_jml_uang']) . ',-'; ?></th>
+                </tr>
             </table>
-            <table align="center">
-            <tr>
-            <td>
-            <div>
-            ----------------------------------------------------------------------------
-            </div>
-            </td>
-            </tr>
             <br />
 
             <table border="0" align="center" style="width:300px;margin-bottom:20px;">
+                <thead>
+
+                    <tr>
+                        <th style="width:5px;font-size: 15px;">No</th>
+                        <th style="width:5px;font-size: 15px;">Nama Barang</th>
+                        <th style="width:5px;font-size: 15px;">Harga Jual</th>
+                        <th style="width:5px;font-size: 15px;">Qty</th>
+                        <th style="width:5px;font-size: 15px;">SubTotal</th>
+                    </tr>
+                    <tr>
+                    <th><br></th>
+                    </tr>
+                </thead>
                 <tbody>
                     <?php
                     $no = 0;
@@ -116,12 +113,11 @@
                         $total = $i['d_jual_total'];
                     ?>
                         <tr>
-                            <!-- <td style="text-align:center;font-size: 15px;"><?php echo $no; ?></td> -->
-                            <td style="text-align:left;font-size: 15px;"><?php echo $nabar; ?></td>
+                            <td style="text-align:center;font-size: 15px;"><?php echo $no; ?></td>
+                            <td style="text-align:center;font-size: 15px;"><?php echo $nabar; ?></td>
 
-                            <td style="text-align:right;font-size: 15px;">(<?php echo '' . number_format($harjul); ?></td>
-                            <td style="text-align:right;font-size: 15px;">X</td>
-                            <td style="text-align:center;font-size: 15px;"><?php echo $qty; ?>)</td>
+                            <td style="text-align:right;font-size: 15px;"><?php echo '' . number_format($harjul); ?></td>
+                            <td style="text-align:center;font-size: 15px;"><?php echo $qty; ?></td>
 
                             <td style="text-align:right;font-size: 15px;"><?php echo '' . number_format($total); ?></td>
                            
@@ -135,34 +131,20 @@
                 </tbody>
                 
 
-                <tfoot align="right" style="margin-top: 10px;width:300px;">
+                <tfoot align="right" style="margin-top: 10px;width:350px;">
                 <tr>
                     <th><br></th>
                     </tr>
 
                     <tr>
-                        <td  style="text-align:right;font-size: 15px;">TOTAL</td>
+                        <td colspan="4" style="text-align:center;font-size: 15px;">Total</td>
                         <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
-                        <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_total']); ?></td>
+                        <td colspan="4" style="text-align:center;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_total']); ?></td>
                         <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
                     </tr>
-
-                    <tr>
-                        <td  style="text-align:right;font-size: 15px;">TUNAI</td>
-                        <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
-                        <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_jml_uang']); ?></td>
-                        <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
-                    </tr>
-                    <tr>
-                        <td style="text-align:right;font-size: 15px;">KEMBALI</td>
-                        <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
-                        <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_kembalian']); ?></td>
-                        <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
-                    </tr>
-                    
                 </tfoot>
                 </table>
-            <!-- <table align="left" style="border:none;margin-top:5px;margin-bottom:20px;">
+            <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
                 <tr>
                     <td>
                         <strong style="font-size: small;">*Selamat Datang Kembali</strong><br>
@@ -172,11 +154,8 @@
                 </tr>
                 <tr>
                     <td></td>
-            </table>  -->
-            
+            </table>
             <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
-            <br/>
-            
                 <tr>
                     <!-- <td align="left" style="font-size: xx-small;">Tegal, <?php echo date('d-M-Y') ?></td> -->
                     <td align="left" style="font-size: small;">Terima kasih</td>
@@ -187,7 +166,7 @@
 
                 <tr>
                     <!-- <td align="left" style="font-size: xx-small;">( <?php echo $this->session->userdata('nama'); ?> )</td> -->
-                    <!-- <td align="left" style="font-size: small;text-align:center;">Kasir</td> -->
+                    <td align="left" style="font-size: small;text-align:center;">Kasir</td>
                 </tr>
                 <tr>
                     <th>
@@ -203,9 +182,9 @@
                     <td align="center"></td>
                 </tr>
             </table>
-            <!-- <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
+            <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
                 <tr>
-                    <td align="left" style="font-size: xx-small;">Tegal, <?php echo date('d-M-Y') ?></td>
+                    <!-- <td align="left" style="font-size: xx-small;">Tegal, <?php echo date('d-M-Y') ?></td> -->
                     <td align="left" style="font-size: small;">=============================================</td>
                 </tr>
                 <tr>
@@ -215,7 +194,7 @@
     
                     <td align="center"></td>
                 </tr>
-            </table> -->
+            </table>
             
             <table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
             <tr>

@@ -52,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<form action="<?php echo base_url() . 'administrator/cekuser' ?>" method="post">
 				<div class="agile-field-txt">
 					<div class="align-center">
-						<h1>Sign in</h1>
+						<h1>GV MULYA JAYA</h1>
 					</div>
 
 					<p><?php echo $this->session->flashdata('msg'); ?></p>

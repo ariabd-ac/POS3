@@ -31,7 +31,43 @@ class Pembelian extends CI_Controller{
         echo "Halaman tidak ditemukan";
     }
 	}
+	// ssss
+	function get_barangBarcode(){
+	if($this->session->userdata('akses')=='1'||$this->session->userdata('akses')=='3'){
+		$kode_barcode=$this->input->post('kode_barcode');
+		$x['brg']=$this->m_barang->get_kbarcode($kode_barcode);
+		$this->load->view('admin/v_detail_barang_beli',$x);
+	}else{
+        echo "Halaman tidak ditemukan";
+    }
+	}
 	function add_to_cart(){
+		if($this->session->userdata('akses')=='1'||$this->session->userdata('akses')=='3'){
+			$nofak=$this->input->post('nofak');
+			$tgl=$this->input->post('tgl');
+			$suplier=$this->input->post('suplier');
+			$this->session->set_userdata('nofak',$nofak);
+			$this->session->set_userdata('tglfak',$tgl);
+			$this->session->set_userdata('suplier',$suplier);
+			$kobar=$this->input->post('kode_brg');
+			$produk=$this->m_barang->get_barang($kobar);
+			$i=$produk->row_array();
+			$data = array(
+								 'id'       => $i['barang_id'],
+								 'name'     => $i['barang_nama'],
+								 'satuan'   => $i['barang_satuan'],
+								 'price'    => $this->input->post('harpok'),
+								 'harga'    => $this->input->post('harjul'),
+								 'qty'      => $this->input->post('jumlah')
+							);
+	
+			$this->cart->insert($data); 
+			redirect('admin/pembelian');
+		}else{
+					echo "Halaman tidak ditemukan";
+			}
+		}
+	function add_to_cart_barcode(){
 	if($this->session->userdata('akses')=='1'||$this->session->userdata('akses')=='3'){
 		$nofak=$this->input->post('nofak');
 		$tgl=$this->input->post('tgl');
@@ -39,11 +75,13 @@ class Pembelian extends CI_Controller{
 		$this->session->set_userdata('nofak',$nofak);
 		$this->session->set_userdata('tglfak',$tgl);
 		$this->session->set_userdata('suplier',$suplier);
-		$kobar=$this->input->post('kode_brg');
-		$produk=$this->m_barang->get_barang($kobar);
+		// $kobar=$this->input->post('kode_brg');
+		$kode_barcode=$this->input->post('kode_barcode');
+		$produk=$this->m_barang->get_kbarcode($kode_barcode);
 		$i=$produk->row_array();
 		$data = array(
-               'id'       => $i['barang_id'],
+							 'id'       => $i['barang_id'],
+							 'kode_barcode' => $i['barang_kbarcode'],
                'name'     => $i['barang_nama'],
                'satuan'   => $i['barang_satuan'],
                'price'    => $this->input->post('harpok'),

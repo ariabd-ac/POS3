@@ -9,7 +9,7 @@
     <meta name="description" content="Produk By Mfikri">
     <meta name="author" content="">
 
-    <title>Welcome To TOKO HENNY / DIDI</title>
+    <title>Welcome Toko GV MULYA JAYA</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() . 'assets/css/bootstrap.min.css' ?>" rel="stylesheet">
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header" style="color:#fcc;">Welcome to
-                    <small>TOKO HENNY / DIDI</small>
+                    <small>TOKO GV MULYA JAYA AWOKAWOK</small>
                 </h1>
             </div>
         </div>
@@ -182,22 +182,7 @@
             <?php } ?>
         </div>
         <?php if ($h == '3') { ?>
-            <div class="col-md-3 portfolio-item">
-                <div class="menu-item purple" style="height:150px;">
-                    <a href="#" data-toggle="modal">
-                        <i class="fa fa-cubes"></i>
-                        <p style="text-align:left;font-size:14px;padding-left:5px;">Penjualan Grosir</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 portfolio-item">
-                <div class="menu-item red" style="height:150px;">
-                    <a href="#" data-toggle="modal">
-                        <i class="fa fa-shopping-bag"></i>
-                        <p style="text-align:left;font-size:14px;padding-left:5px;">Penjualan Eceran</p>
-                    </a>
-                </div>
-            </div>
+
             <div class="col-md-3 portfolio-item">
                 <div class="menu-item blue" style="height:150px;">
                     <a href="<?php echo base_url() . 'admin/laporan/lap_data_pembelian' ?>" target="_blank">

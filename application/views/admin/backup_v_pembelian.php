@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Produk By Ari">
+    <meta name="description" content="Produk By Mfikri">
     <meta name="author" content="">
 
     <title>Welcome To Point of Sale Apps</title>
@@ -41,20 +41,67 @@
                     <a href="#" data-toggle="modal" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a>
 
                 </h1>
-                
+                <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;width:40px;">No</th>
+                                    <th style="width:120px;">Kode Barang</th>
+                                    <th style="width:240px;">Nama Barang</th>
+                                    <th>Satuan</th>
+                                    <th style="width:100px;">Harga pokok</th>
+                                    <th style="width:100px;">Harga jual</th>
+                                    <th>jumlah</th>
+                                    <th style="width:100px;text-align:center;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 0;
+                                foreach ($data->result_array() as $a) :
+                                    $no++;
+                                    $id = $a['barang_id'];
+                                    $nm = $a['barang_nama'];
+                                    $satuan = $a['barang_satuan'];
+                                    $harpok = $a['barang_harpok'];
+                                    $harjul = $a['barang_harjul'];
+                                    $harjul_grosir = $a['barang_harjul_grosir'];
+                                    $stok = $a['barang_stok'];
+                                    $min_stok = $a['barang_min_stok'];
+                                    $kat_id = $a['barang_kategori_id'];
+                                    $kat_nama = $a['kategori_nama'];
+
+                                ?>
+                                    <tr>
+                                        <td style="text-align:center;"><?php echo $no; ?></td>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nm; ?></td>
+                                        <td style="text-align:center;"><?php echo $satuan; ?></td>
+                                        <form action="<?php echo base_url() . 'admin/pembelian/add_to_cart' ?>" method="post">
+                                            <input type="hidden" name="kode_brg" value="<?php echo $id ?>">
+                                            <input type="hidden" name="nabar" value="<?php echo $nm; ?>">
+                                            <input type="hidden" name="satuan" value="<?php echo $satuan; ?>">
+                                            <td><input type="text" name="harpok" value="<?php echo $harpok; ?>"></td>
+                                            <td><input type="text" name="harjul" value="<?php echo $harjul; ?>"></td>
+                                            <td><input type="number" name="jumlah" value="1" min="1" class="form-control input-sm" style="width:90px;margin-right:5px;" required></td>
+                                            <td>
+                                                <button type="submit" class="btn btn-xs btn-info" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
+                                        </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
             </div>
         </div>
         <!-- /.row -->
         <!-- Projects Row -->
         <div class="row">
             <div class="col-lg-12">
-                <form action="<?php echo base_url() . 'admin/pembelian/add_to_cart_barcode' ?>" method="post">
+                <form action="<?php echo base_url() . 'admin/pembelian/add_to_cart' ?>" method="post">
                     <table>
                         <tr>
                             <th style="width:100px;padding-bottom:5px;">No Faktur</th>
-                            <th style="width:300px;padding-bottom:5px;">
-                                <input type="text" name="nofak" id="nofak" value="<?php echo $this->session->userdata('nofak'); ?>" class="form-control input-sm" style="width:200px;" required>
-                            </th>
+                            <th style="width:300px;padding-bottom:5px;"><input type="text" name="nofak" id="nofak" value="<?php echo $this->session->userdata('nofak'); ?>" class="form-control input-sm" style="width:200px;" required></th>
                             <th style="width:90px;padding-bottom:5px;">Suplier</th>
                             <td style="width:350px;">
                                 <select name="suplier" class="selectpicker show-tick form-control" data-live-search="true" title="Pilih Suplier" data-width="100%" required>
@@ -86,25 +133,16 @@
                     </table>
                     <hr />
                     <table>
-                        <!-- <tr>
+                        <tr>
                             <th>Kode Barang</th>
                         </tr>
                         <tr>
                             <th><input type="text" name="kode_brg" id="kode_brg" class="form-control input-sm"></th>
-                            
-                        </tr> -->
-                        <tr>
-                            <th>Kode Barcode</th>
                         </tr>
-                        <tr>
-                        <th><input type="text" name="kode_barcode" id="kode_barcode" class="form-control input-sm"></th>
-                        </tr>
-                
                         <div id="detail_barang" style="position:absolute;">
                         </div>
                     </table>
                 </form>
-                
                 <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
                     <thead>
                         <tr>
@@ -155,61 +193,8 @@
                         <h3 class="modal-title" id="myModalLabel">Data Barang</h3>
                     </div>
                     <div class="modal-body" style="overflow:scroll;height:500px;">
-                    
-                    <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center;width:40px;">No</th>
-                                    <th style="width:120px;">Kode Barang</th>
-                                    <th style="width:120px;">Kode Barcode</th>
-                                    <th style="width:240px;">Nama Barang</th>
-                                    <th>Satuan</th>
-                                    <th style="width:100px;">Harga pokok</th>
-                                    <th style="width:100px;">Harga jual</th>
-                                    <th>jumlah</th>
-                                    <th style="width:100px;text-align:center;">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 0;
-                                foreach ($data->result_array() as $a) :
-                                    $no++;
-                                    $id = $a['barang_id'];
-                                    $kode_barcode = $a['barang_kbarcode'];
-                                    $nm = $a['barang_nama'];
-                                    $satuan = $a['barang_satuan'];
-                                    $harpok = $a['barang_harpok'];
-                                    $harjul = $a['barang_harjul'];
-                                    $harjul_grosir = $a['barang_harjul_grosir'];
-                                    $stok = $a['barang_stok'];
-                                    $min_stok = $a['barang_min_stok'];
-                                    $kat_id = $a['barang_kategori_id'];
-                                    $kat_nama = $a['kategori_nama'];
 
-                                ?>
-                                    <tr>
-                                        <td style="text-align:center;"><?php echo $no; ?></td>
-                                        <td><?php echo $id; ?></td>
-                                        <td><?php echo $kode_barcode; ?></td>
-                                        <td><?php echo $nm; ?></td>
-                                        <td style="text-align:center;"><?php echo $satuan; ?></td>
-                                        <form action="<?php echo base_url() . 'admin/pembelian/add_to_cart_barcode' ?>" method="post">
-                                            <input type="hidden" name="kode_brg" value="<?php echo $id ?>">
-                                            <input type="hidden" name="kode_barcode" value="<?php echo $kode_barcode ?>">
-                                            <input type="hidden" name="nabar" value="<?php echo $nm; ?>">
-                                            <input type="hidden" name="satuan" value="<?php echo $satuan; ?>">
-                                            <td><input type="text" name="harpok" value="<?php echo $harpok; ?>"></td>
-                                            <td><input type="text" name="harjul" value="<?php echo $harjul; ?>"></td>
-                                            <td><input type="number" name="jumlah" value="1" min="1" class="form-control input-sm" style="width:90px;margin-right:5px;" required></td>
-                                            <td>
-                                                <button type="submit" class="btn btn-xs btn-info" title="Pilih"><span class="fa fa-edit"></span> Pilih</button>
-                                        </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                        
 
                     </div>
 
@@ -269,9 +254,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#mydata').DataTable({
-                
-            });
+            $('#mydata').DataTable();
         });
     </script>
     <script type="text/javascript">
@@ -309,31 +292,6 @@
             });
 
             $("#kode_brg").keypress(function(e) {
-                if (e.which == 13) {
-                    $("#jumlah").focus();
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //Ajax kabupaten/kota insert
-            $("#kode_barcode").focus();
-            $("#kode_barcode").keyup(function() {
-                var kobarcode = {
-                    kode_barcode: $(this).val()
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url() . 'admin/pembelian/get_barangBarcode'; ?>",
-                    data: kobarcode,
-                    success: function(msg) {
-                        $('#detail_barang').html(msg);
-                    }
-                });
-            });
-
-            $("#kode_barcode").keypress(function(e) {
                 if (e.which == 13) {
                     $("#jumlah").focus();
                 }
