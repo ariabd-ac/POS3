@@ -61,15 +61,15 @@
     <div class="container">
 
         <div class="row" style="height: 70px;">
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
 
-            </div>
-            <div class="col-lg-6" style="background: #f2f2f2f2; height: 90px; border-radius: 10px;">
+            </div> -->
+            <div class="col-lg-12" style="background: #f2f2f2f2; height: 90px; border-radius: 10px;">
 
                 Keterangan :
                 <br />
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
 
                         <table>
                             <tr>
@@ -89,36 +89,66 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <table>
                             <tr>
                                 <th style="width:30px;padding-bottom:5px;">F3</th>
                                 <th>:</th>
-                                <th>Tunai</th>
+                                <th>Masukan Uang</th>
                             </tr>
                             <tr>
-                                <th style="width:30px;padding-bottom:5px;">K</th>
+                                <th style="width:30px;padding-bottom:5px;">F1</th>
                                 <th>:</th>
                                 <th>Kode Barcode</th>
+                            </tr>
+                            <tr>
+                                <th style="width:30px;padding-bottom:5px;">F4</th>
+                                <th>:</th>
+                                <th>Cari Produk</th>
                             </tr>
                         </table>
 
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <table>
                             <tr>
-                                <th style="width:30px;padding-bottom:5px;">J</th>
+                                <th style="width:20%;">F2</th>
                                 <th>:</th>
-                                <th style="width:3px;">Jumlah</th>
+                                <th style="width:100%">Jumlah</th>
+                            </tr>
+                            <tr>
+                                <th style="width:20px;">F11</th>
+                                <th>:</th>
+                                <th style="width:3px;">Full Screen</th>
+                            </tr>
+                            <tr>
+                                <th>F5</th>
+                                <th>:</th>
+                                <th>Scan barang</th>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- <div class="col-sm-3">
+                        <table>
+                            <tr>
+                                <th style="width:20%;">F2</th>
+                                <th>:</th>
+                                <th>Jumlah</th>
                             </tr>
                             <tr>
                                 <th>F11</th>
                                 <th>:</th>
                                 <th>Full Screen</th>
                             </tr>
+                            <tr>
+                                <th>F5</th>
+                                <th>:</th>
+                                <th>Scan barang</th>
+                            </tr>
                         </table>
 
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -130,7 +160,7 @@
                 <center><?php echo $this->session->flashdata('msg'); ?></center>
                 <h1 class="page-header">Transaksi
                     <small>Penjualan (Grosir)</small>
-                    <a href="#" data-toggle="modal" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a>
+                    <a href="#" data-toggle="modal" id="cari_b" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a>
                 </h1>
             </div>
         </div>
@@ -346,17 +376,32 @@
                 //     $('#save').click();
                 // }
 
-                if (e.keyCode == 74) {
+                if (e.keyCode == 113) {
                     e.preventDefault();
                     $('#qty').focus();
                 }
-                if (e.keyCode == 75) {
+                if (e.keyCode == 112) {
                     e.preventDefault();
                     $('#kode_barcode').focus();
                 }
                 if (e.ctrlKey && e.keyCode == 68) {
                     e.preventDefault();
                     $('#diskon').focus();
+                }
+                if (e.keyCode == 115) {
+                    e.preventDefault();
+                    $('#cari_b').click();
+                }
+
+                if (e.keyCode == 116) {
+                    e.preventDefault();
+                    $('#mydata_filter input').focus()
+                }
+
+                if (e.keyCode == 117) {
+                    e.preventDefault();
+                    $('#id="mydata" .qty').focus()
+                    // $('#mydata_filter input').focus()
                 }
             });
         </script>

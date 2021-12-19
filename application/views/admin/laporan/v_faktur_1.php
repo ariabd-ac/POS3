@@ -5,23 +5,24 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/laporan.css') ?>" />
     <style>
-    *{
-        margin-top: 0;
-    }
-    td, th {
-    padding: 4px;
-}
+        * {
+            margin-top: 0;
+        }
 
+        td,
+        th {
+            padding: 4px;
+        }
     </style>
-      <style>
+    <style>
         .jam {
-        font-size: 1em;
-        background-color: transparent;
-        /* border: 2px solid #d35400; */
-        border-radius: 5px;
-        padding: 10px;
-    }
-</style>
+            font-size: 1em;
+            background-color: transparent;
+            /* border: 2px solid #d35400; */
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body onload="window.print()">
@@ -33,10 +34,10 @@
                         <!-- <td style=""> -->
                         <td style="text-align: center;">
 
-                            <span style="font-size:  18pt;  font-weight:  bold;  color: red;">GV MULYA JAYA</span><br>
+                            <span style="font-size:  18pt;  font-weight:  bold;  color: red;"></span><br>
                             <span style="font-size: 17pt; font-weight: bold; font-style: italic;">
                                 <small style="font-size: small;">
-                                     Perempatan Psr Ketembreng TLP.0815 6939 118
+                                    Perempatan Psr Ketembreng TLP.0815 6939 118
                                 </small>
                             </span>
 
@@ -48,7 +49,8 @@
         <div id="laporan">
             <table align="center" style="width:320px; border-bottom:3px double;border-top:none;border-right:none;border-left:none;margin-top:5px;margin-bottom:20px;">
                 <!--<tr>
-    <td><img src="<?php// echo base_url().'assets/img/kop_surat.png'?>"/></td>
+    <td><img src="<? php // echo base_url().'assets/img/kop_surat.png'
+                    ?>"/></td>
 </tr>-->
             </table>
 
@@ -95,7 +97,7 @@
                         <th style="width:5px;font-size: 15px;">SubTotal</th>
                     </tr>
                     <tr>
-                    <th><br></th>
+                        <th><br></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,20 +122,20 @@
                             <td style="text-align:center;font-size: 15px;"><?php echo $qty; ?></td>
 
                             <td style="text-align:right;font-size: 15px;"><?php echo '' . number_format($total); ?></td>
-                           
+
                         </tr>
 
-                            <?php } ?>
+                    <?php } ?>
 
-             
-                    
+
+
 
                 </tbody>
-                
+
 
                 <tfoot align="right" style="margin-top: 10px;width:350px;">
-                <tr>
-                    <th><br></th>
+                    <tr>
+                        <th><br></th>
                     </tr>
 
                     <tr>
@@ -143,7 +145,7 @@
                         <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
                     </tr>
                 </tfoot>
-                </table>
+            </table>
             <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
                 <tr>
                     <td>
@@ -178,8 +180,8 @@
                         <br>
                     </th>
                 </tr>
-          
-                    <td align="center"></td>
+
+                <td align="center"></td>
                 </tr>
             </table>
             <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
@@ -191,16 +193,18 @@
                     <td align="right"></td>
                 </tr>
 
-    
-                    <td align="center"></td>
+
+                <td align="center"></td>
                 </tr>
             </table>
-            
+
             <table align="center" style="width:700px; border:none;margin-top:5px;margin-bottom:20px;">
-            <tr>
-                        <td align="left" style="font-size: small;text-align:center;"><div class="jam"></div></td>
-                </tr>   
-                    <br />  
+                <tr>
+                    <td align="left" style="font-size: small;text-align:center;">
+                        <div class="jam"></div>
+                    </td>
+                </tr>
+                <br />
                 <tr>
                     <th align="left"></th>
                 </tr>

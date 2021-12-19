@@ -23,7 +23,32 @@
     <link href="<?php echo base_url() . 'assets/css/jquery.dataTables.min.css' ?>" rel="stylesheet">
     <link href="<?php echo base_url() . 'assets/dist/css/bootstrap-select.css' ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap-datetimepicker.min.css' ?>">
+    <!-- roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
     <style type="text/css">
+        body {
+
+            background-color: #4361ee;
+        }
+
+
+
+        input {
+            border: 2px solid black !important;
+        }
+
+
+
+        @font-face {
+            font-family: "pizzadude";
+            src: url(<?php echo base_url() . 'assets/fonts/BALLSONTHERAMPAGE.ttf' ?>);
+        }
+
+
+
         .bg {
             width: 100%;
             height: 100%;
@@ -42,6 +67,43 @@
             padding: 10px;
 
         }
+
+        .totalHarga {
+            /* align-self: flex-start; */
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            color: red;
+            font-family: "pizzadude";
+            font-size: 5rem;
+        }
+
+        .nominalHarga {
+            font-size: 6rem;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            color: #06FF00;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .tbl-custom {
+            width: 100%;
+            border: 1px solid black !important;
+
+        }
+
+        .tbl-custom tr td {
+            border: 1px solid black !important;
+            text-align: center !important;
+        }
+
+        .cust_container {
+            border: 1px solid black !important;
+            background-color: #dfe7fd !important;
+        }
     </style>
     <style>
         input.transparent-input {
@@ -52,7 +114,8 @@
 </head>
 
 <body>
-    <img src="<?php echo base_url() . 'assets/img/bg6.jpg' ?>" alt="gambar" class="bg" />
+    <!-- <img src="<?php echo base_url() . 'assets/img/bg6.jpg' ?>" alt="gambar" class="bg" /> -->
+
 
     <!-- Navigation -->
     <?php
@@ -64,66 +127,16 @@
 
 
         <div class="row" style="height: 70px;">
-            <div class="col-lg-6">
-
-            </div>
-            <div class="col-lg-6" style="background: #f2f2f2f2; height: 90px; border-radius: 10px;">
-
-                Keterangan :
-                <br />
-                <div class="row">
-                    <div class="col-sm-4">
-
-                        <table>
-                            <tr>
-                                <th style="width:100px;padding-bottom:5px;">ctrl+r</th>
-                                <th>:</th>
-                                <th style="width:300px;padding-bottom:5px;">Reload Data</th>
-                            </tr>
-                            <tr>
-                                <th>ctrl+d</th>
-                                <th>:</th>
-                                <th>Diskon</th>
-                            </tr>
-                            <tr>
-                                <th>alt+b</th>
-                                <th>:</th>
-                                <th>Bayar</th>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-sm-4">
-                        <table>
-                            <tr>
-                                <th style="width:30px;padding-bottom:5px;">F3</th>
-                                <th>:</th>
-                                <th>Tunai</th>
-                            </tr>
-                            <tr>
-                                <th style="width:30px;padding-bottom:5px;">K</th>
-                                <th>:</th>
-                                <th>Kode Barcode</th>
-                            </tr>
-                        </table>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <table>
-                            <tr>
-                                <th style="width:30px;padding-bottom:5px;">J</th>
-                                <th>:</th>
-                                <th style="width:3px;">Jumlah</th>
-                            </tr>
-                            <tr>
-                                <th>F11</th>
-                                <th>:</th>
-                                <th>Full Screen</th>
-                            </tr>
-                        </table>
-
-                    </div>
+            <!-- <div class="col-lg-6">
+            </div> -->
+            <div class="col-lg-12" style="background: #041C32; height: 90px; display:flex;">
+                <!-- <div class="totalHarga"></div> -->
+                <div class="nominalHarga">
+                    Rp.
+                    <span id="TBTop">
+                        <?php echo $this->cart->total(); ?>
+                    </span>
                 </div>
-
             </div>
         </div>
 
@@ -134,7 +147,7 @@
 
                 <center><?php echo $this->session->flashdata('msg'); ?></center>
                 <h1 class="page-header">Transaksi
-                    <small style="font-weight:bold;">Penjualan (Eceran)</small>
+                    <!-- <small style="font-weight:bold;">Penjualan</small> -->
                     <a href="#" data-toggle="modal" data-target="#largeModal" code="2" id="cari_b" accesskey="f" class="pull-right"><small style="font-weight:bold;">Cari Produk!</small></a>
                 </h1>
 
@@ -152,7 +165,7 @@
                             <th style="width:100px;padding-bottom:5px;">Kasir</th>
                             <th style=""> : </th>
                             <th style="width:300px;padding-bottom:5px;">
-                                <input type="text" name="nkasir" id="nkasir" value="Gading" class="form-control transparent-input" style="width:200px;" required>
+                                <input type="text" name="nkasir" id="nkasir" value="Kasir" class="form-control transparent-input" style="width:200px;" required>
                             </th>
                         <tr>
                             <th>Jam</th>
@@ -176,7 +189,9 @@
                         </div>
                     </table>
                 </form>
-                <table class="table table-bordered table-condensed" style="font-size:20px;margin-top:10px;font-color:black;">
+
+
+                <table class="tbl-custom" style="font-size:20px;margin-top:10px;font-color:black;">
                     <thead>
                         <tr>
                             <th>Kode Barang</th>
@@ -209,6 +224,12 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+
+
+
+
+
+
                 <form action="<?php echo base_url() . 'admin/penjualan/simpan_penjualan' ?>" method="post">
                     <table>
                         <tr>
@@ -242,6 +263,98 @@
 
 
 
+            </div>
+
+            <div class="row" style="height: 70px;">
+                <!-- <div class="col-lg-6">
+            </div> -->
+                <div class="col-lg-12" style="background: #ffafcc; height: 90px; border-radius: 10px;">
+                    Keterangan :
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3">
+
+                            <table>
+                                <tr>
+                                    <th style="width:100px;padding-bottom:5px;">ctrl+r</th>
+                                    <th>:</th>
+                                    <th style="width:300px;padding-bottom:5px;">Reload Data</th>
+                                </tr>
+                                <tr>
+                                    <th>ctrl+d</th>
+                                    <th>:</th>
+                                    <th>Diskon</th>
+                                </tr>
+                                <tr>
+                                    <th>alt+b</th>
+                                    <th>:</th>
+                                    <th>Bayar</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-sm-3">
+                            <table>
+                                <tr>
+                                    <th style="width:30px;padding-bottom:5px;">F3</th>
+                                    <th>:</th>
+                                    <th>Masukan Uang</th>
+                                </tr>
+                                <tr>
+                                    <th style="width:30px;padding-bottom:5px;">F1</th>
+                                    <th>:</th>
+                                    <th>Kode Barcode</th>
+                                </tr>
+                                <tr>
+                                    <th style="width:30px;padding-bottom:5px;">F4</th>
+                                    <th>:</th>
+                                    <th>Cari Produk</th>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <table>
+                                <tr>
+                                    <th style="width:20%;">F2</th>
+                                    <th>:</th>
+                                    <th style="width:100%">Jumlah</th>
+                                </tr>
+                                <tr>
+                                    <th style="width:20px;">F11</th>
+                                    <th>:</th>
+                                    <th style="width:3px;">Full Screen</th>
+                                </tr>
+                                <tr>
+                                    <th>F5</th>
+                                    <th>:</th>
+                                    <th>Scan barang</th>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <!-- <div class="col-sm-3">
+                        <table>
+                            <tr>
+                                <th style="width:20%;">F2</th>
+                                <th>:</th>
+                                <th>Jumlah</th>
+                            </tr>
+                            <tr>
+                                <th>F11</th>
+                                <th>:</th>
+                                <th>Full Screen</th>
+                            </tr>
+                            <tr>
+                                <th>F5</th>
+                                <th>:</th>
+                                <th>Scan barang</th>
+                            </tr>
+                        </table>
+
+                    </div> -->
+                    </div>
+
+                </div>
             </div>
 
 
@@ -341,8 +454,9 @@
                     } else {
                         alert('data gagal ditambahkan')
                     }
-                }
+                },
             });
+
         }
         $(function() {
             $('#jml_uang').on("input", function() {
@@ -372,11 +486,11 @@
             //     $('#save').click();
             // }
 
-            if (e.keyCode == 74) {
+            if (e.keyCode == 113) {
                 e.preventDefault();
                 $('#qty').focus();
             }
-            if (e.keyCode == 75) {
+            if (e.keyCode == 112) {
                 e.preventDefault();
                 $('#kode_barcode').focus();
             }
@@ -384,14 +498,20 @@
                 e.preventDefault();
                 $('#diskon').focus();
             }
-            if (e.ctrlKey && e.keyCode == 70) {
+            if (e.keyCode == 115) {
                 e.preventDefault();
                 $('#cari_b').click();
             }
 
-            if (e.ctrlKey && e.keyCode == 67) {
+            if (e.keyCode == 116) {
                 e.preventDefault();
                 $('#mydata_filter input').focus()
+            }
+
+            if (e.keyCode == 117) {
+                e.preventDefault();
+                $('#id="mydata" .qty').focus()
+                // $('#mydata_filter input').focus()
             }
         });
 
@@ -440,6 +560,12 @@
                 thousandsSeparator: ','
             });
             $('.harjul').priceFormat({
+                prefix: '',
+                //centsSeparator: '',
+                centsLimit: 0,
+                thousandsSeparator: ','
+            });
+            $('#TBTop').priceFormat({
                 prefix: '',
                 //centsSeparator: '',
                 centsLimit: 0,

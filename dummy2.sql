@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2021 pada 09.52
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.3.1
+-- Host: localhost:3306
+-- Waktu pembuatan: 19 Des 2021 pada 12.12
+-- Versi server: 5.7.33
+-- Versi PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dummy`
+-- Database: `dummy2`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +40,7 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('1dda66ca5dad08a020513b7ecdf7b5d3', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0', 1619077365, 'a:6:{s:9:\"user_data\";s:0:\"\";s:5:\"masuk\";b:1;s:4:\"user\";s:14:\"admin@admin.id\";s:5:\"akses\";s:1:\"1\";s:7:\"idadmin\";s:1:\"1\";s:4:\"nama\";s:5:\"admin\";}');
+('26a13ca4455699c523f88a7a9a903c2b', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1639915805, 'a:7:{s:9:\"user_data\";s:0:\"\";s:5:\"masuk\";b:1;s:4:\"user\";s:14:\"admin@admin.id\";s:5:\"akses\";s:1:\"1\";s:7:\"idadmin\";s:1:\"1\";s:4:\"nama\";s:5:\"admin\";s:5:\"nofak\";s:12:\"191221000001\";}');
 
 -- --------------------------------------------------------
 
@@ -69,6 +68,9 @@ CREATE TABLE `tbl_barang` (
 -- Dumping data untuk tabel `tbl_barang`
 --
 
+INSERT INTO `tbl_barang` (`barang_id`, `barang_kbarcode`, `barang_nama`, `barang_satuan`, `barang_harpok`, `barang_harjul`, `barang_harjul_grosir`, `barang_stok`, `barang_min_stok`, `barang_tgl_input`, `barang_tgl_last_update`, `barang_kategori_id`, `barang_user_id`) VALUES
+('BR000001', '001', 'Air Mineral', 'Kotak', 3000, 5000, 6000, 70, 0, '2021-12-19 10:20:40', NULL, 68, 1),
+('BR000002', '002', 'Mie', 'Unit', 4999, 5000, 6000, 5990, 0, '2021-12-19 11:30:57', NULL, 69, 1);
 
 -- --------------------------------------------------------
 
@@ -83,6 +85,26 @@ CREATE TABLE `tbl_beli` (
   `beli_user_id` int(11) DEFAULT NULL,
   `beli_kode` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_departmnet`
+--
+
+CREATE TABLE `tbl_departmnet` (
+  `dep_id` int(3) NOT NULL,
+  `dep_name` varchar(50) NOT NULL,
+  `dep_address` varchar(50) NOT NULL,
+  `dep_phone` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_departmnet`
+--
+
+INSERT INTO `tbl_departmnet` (`dep_id`, `dep_name`, `dep_address`, `dep_phone`) VALUES
+(1, 'WM Kagok', 'Kagok', '123');
 
 -- --------------------------------------------------------
 
@@ -123,6 +145,10 @@ CREATE TABLE `tbl_detail_jual` (
 -- Dumping data untuk tabel `tbl_detail_jual`
 --
 
+INSERT INTO `tbl_detail_jual` (`d_jual_id`, `d_jual_nofak`, `d_jual_barang_id`, `d_jual_barang_nama`, `d_jual_barang_satuan`, `d_jual_barang_harpok`, `d_jual_barang_harjul`, `d_jual_qty`, `d_jual_diskon`, `d_jual_total`) VALUES
+(244, '191221000001', 'BR000001', 'Air Mineral', 'Kotak', 3000, 5000, 30, 0, 150000),
+(245, '191221000001', 'BR000002', 'Mie', 'Unit', 4999, 5000, 10, 0, 50000);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +168,9 @@ CREATE TABLE `tbl_jual` (
 --
 -- Dumping data untuk tabel `tbl_jual`
 --
+
+INSERT INTO `tbl_jual` (`jual_nofak`, `jual_tanggal`, `jual_total`, `jual_jml_uang`, `jual_kembalian`, `jual_user_id`, `jual_keterangan`) VALUES
+('191221000001', '2021-12-19 11:46:41', 200000, 200000, 0, 1, 'eceran');
 
 -- --------------------------------------------------------
 
@@ -269,6 +298,12 @@ ALTER TABLE `tbl_beli`
   ADD KEY `beli_id` (`beli_kode`);
 
 --
+-- Indeks untuk tabel `tbl_departmnet`
+--
+ALTER TABLE `tbl_departmnet`
+  ADD PRIMARY KEY (`dep_id`);
+
+--
 -- Indeks untuk tabel `tbl_detail_beli`
 --
 ALTER TABLE `tbl_detail_beli`
@@ -321,6 +356,12 @@ ALTER TABLE `tbl_user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tbl_departmnet`
+--
+ALTER TABLE `tbl_departmnet`
+  MODIFY `dep_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbl_detail_beli`
 --
 ALTER TABLE `tbl_detail_beli`
@@ -330,7 +371,7 @@ ALTER TABLE `tbl_detail_beli`
 -- AUTO_INCREMENT untuk tabel `tbl_detail_jual`
 --
 ALTER TABLE `tbl_detail_jual`
-  MODIFY `d_jual_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `d_jual_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kategori`

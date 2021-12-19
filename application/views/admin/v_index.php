@@ -9,7 +9,7 @@
     <meta name="description" content="Produk By Mfikri">
     <meta name="author" content="">
 
-    <title>Welcome Toko GV MULYA JAYA</title>
+    <title>Welcome POINT OF SALE</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() . 'assets/css/bootstrap.min.css' ?>" rel="stylesheet">
@@ -50,9 +50,12 @@
 
         <!-- Page Heading -->
         <div class="row">
+            <?php
+            $s = $settings->row_array();
+            ?>
             <div class="col-lg-12">
                 <h1 class="page-header" style="color:#fcc;">Welcome to
-                    <small>TOKO GV MULYA JAYA AWOKAWOK</small>
+                    <small>TOKO <?= $s['dep_name'] ?></small>
                 </h1>
             </div>
         </div>
@@ -72,14 +75,14 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3 portfolio-item">
+                    <!-- <div class="col-md-3 portfolio-item">
                         <div class="menu-item green" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/penjualan_grosir' ?>" data-toggle="modal">
                                 <i class="fa fa-cubes"></i>
                                 <p style="text-align:left;font-size:14px;padding-left:5px;">Penjualan Grosir</p>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-3 portfolio-item">
                         <div class="menu-item light-orange" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/suplier' ?>" data-toggle="modal">
@@ -96,6 +99,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-3 portfolio-item">
+                        <div class="menu-item purple" style="height:150px;">
+                            <a href="<?php echo base_url() . 'admin/barang' ?>" data-toggle="modal">
+                                <i class="fa fa-shopping-cart"></i>
+                                <p style="text-align:left;font-size:14px;padding-left:5px;">Barang</p>
+                            </a>
+                        </div>
+                    </div>
                 <?php } ?>
                 <?php if ($h == '2') { ?>
                 <?php } ?>
@@ -106,14 +117,14 @@
             <!-- Projects Row -->
             <div class="row">
                 <?php if ($h == '1') { ?>
-                    <div class="col-md-3 portfolio-item">
+                    <!-- <div class="col-md-3 portfolio-item">
                         <div class="menu-item purple" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/barang' ?>" data-toggle="modal">
                                 <i class="fa fa-shopping-cart"></i>
                                 <p style="text-align:left;font-size:14px;padding-left:5px;">Barang</p>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-3 portfolio-item">
                         <div class="menu-item red" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/pengguna' ?>" data-toggle="modal">
@@ -131,13 +142,21 @@
                         </div>
                     </div>
                     <div class="col-md-3 portfolio-item">
+                        <div class="menu-item green" style="height:150px;">
+                            <a href="<?php echo base_url() . 'admin/settings' ?>" data-toggle="modal">
+                                <i class="fa fa-bar-chart"></i>
+                                <p style="text-align:left;font-size:14px;padding-left:5px;">Settings</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3 portfolio-item">
                         <div class="menu-item light-red" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/pembelian' ?>" data-toggle="modal">
                                 <i class="fa fa-cubes"></i>
                                 <p style="text-align:left;font-size:14px;padding-left:5px;">Pembelian</p>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 <?php } ?>
                 <?php if ($h == '2') { ?>
                     <div class="col-md-3 portfolio-item">
@@ -207,6 +226,7 @@
     <!-- /.container -->
 
     <!-- jQuery -->
+
     <script src="<?php echo base_url() . 'assets/js/jquery.js' ?>"></script>
 
     <!-- Bootstrap Core JavaScript -->

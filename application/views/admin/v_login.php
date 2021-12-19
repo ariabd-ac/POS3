@@ -52,9 +52,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<form action="<?php echo base_url() . 'administrator/cekuser' ?>" method="post">
 				<div class="agile-field-txt">
 					<div class="align-center">
-						<h1>GV MULYA JAYA</h1>
+						<?php
+						foreach ($settings->result_array() as $a) :
+							$nm = $a['dep_name'];
+						?>
+							<h1><?= $nm ?></h1>
+						<?php endforeach; ?>
 					</div>
-
 					<p><?php echo $this->session->flashdata('msg'); ?></p>
 					<input type="Email" name="username" placeholder="info@example.com" required="" />
 				</div>

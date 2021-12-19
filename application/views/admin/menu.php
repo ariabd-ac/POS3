@@ -13,7 +13,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo base_url() . 'welcome' ?>">Toko GV MULYA JAYA</a>
+            <?php
+            // var_dump($data->result_array())
+            // $s = $settings->row_array();
+            ?>
+            <a class="navbar-brand" href="<?php echo base_url() . 'welcome' ?>">Toko </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +31,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Transaksi"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Transaksi</a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo base_url() . 'admin/penjualan' ?>"><span class="fa fa-shopping-bag" aria-hidden="true"></span> Penjualan (Eceran)</a></li>
-                            <li><a href="<?php echo base_url() . 'admin/penjualan_grosir' ?>"><span class="fa fa-cubes" aria-hidden="true"></span> Penjualan (Grosir)</a></li>
+                            <!-- <li><a href="<?php echo base_url() . 'admin/penjualan_grosir' ?>"><span class="fa fa-cubes" aria-hidden="true"></span> Penjualan (Grosir)</a></li> -->
                         </ul>
                     </li>
                     <!--ending dropdown-->
@@ -46,7 +50,8 @@
                         <ul class="dropdown-menu">
                             <li style="text-align:center;"><small> Tanggal : <?php echo date('d-m-Y') ?></small></li>
                             <li>
-                                <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a> </li>
+                                <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a>
+                            </li>
 
                     </li>
 
@@ -73,7 +78,8 @@
                         <ul class="dropdown-menu">
                             <li style="text-align:center;"><small> Tanggal : <?php echo date('d-m-Y') ?></small></li>
                             <li>
-                                <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a> </li>
+                                <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a>
+                            </li>
 
                     </li>
                 <?php } ?>
@@ -93,7 +99,8 @@
                     <ul class="dropdown-menu">
                         <li style="text-align:center;"><small> Tanggal : <?php echo date('d-m-Y') ?></small></li>
                         <li>
-                            <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a> </li>
+                            <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a>
+                        </li>
 
                 </li>
             <?php } ?>
@@ -108,7 +115,8 @@
                     <ul class="dropdown-menu">
                         <li style="text-align:center;"><small> Tanggal : <?php echo date('d-m-Y') ?></small></li>
                         <li>
-                            <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a> </li>
+                            <a href="<?php echo base_url() . 'administrator/logout' ?>"><span class="fa fa-sign-out"></span> Logout</a>
+                        </li>
 
                 </li>
                 <!--ending dropdown-->
@@ -160,12 +168,14 @@
 
                 </div>
                 <!-- Bootstrap Core JavaScript -->
+                <!-- <script src="<?php echo base_url() . 'assets/js/jquery.js' ?>"></script> -->
                 <script src="<?php echo base_url() . 'assets/dist/js/bootstrap-select.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/bootstrap.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/dataTables.bootstrap.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/moment.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/bootstrap-datetimepicker.min.js' ?>"></script>
+                <script src="<?php echo base_url() . 'assets/js/jquery.price_format.min.js' ?>"></script>
                 <script type="text/javascript">
                     $(function() {
                         $('#datepicker2').datetimepicker({
@@ -174,10 +184,20 @@
                     });
                 </script>
                 <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#mydata').DataTable();
-                    });
+                    function deleteData(kode_barang) {
+                        window.location.href = "<?php echo base_url() ?>admin/barang/hapus_barang/" + kode_barang;
+
+                    }
+
+                    function editData(kode_barang) {
+                        window.location.href = "<?php echo base_url() ?>admin/barang/edit_barang/" + kode_barang;
+                        // alert(kode_barang);
+
+
+
+                    }
                 </script>
+
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
                     <button class="btn btn-info"><span class="fa fa-print"></span> Cetak</button>
