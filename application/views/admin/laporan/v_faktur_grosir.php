@@ -34,7 +34,7 @@
                         <!-- <td style=""> -->
                         <td style="text-align: center;">
 
-                            <span style="font-size:  18pt;  font-weight:  bold;  color: black;"></span><br>
+                            <span style="font-size:  18pt;  font-weight:  bold;  color: black;">GV</span><br>
                             <span style="font-size: 17pt; font-weight: bold; font-style: italic;">
                                 <small style="font-size: small;">
                                     Perempatan Psr Ketembreng TLP. 0815 6939 118
