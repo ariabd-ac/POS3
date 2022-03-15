@@ -145,9 +145,7 @@ CREATE TABLE `tbl_detail_jual` (
 -- Dumping data untuk tabel `tbl_detail_jual`
 --
 
-INSERT INTO `tbl_detail_jual` (`d_jual_id`, `d_jual_nofak`, `d_jual_barang_id`, `d_jual_barang_nama`, `d_jual_barang_satuan`, `d_jual_barang_harpok`, `d_jual_barang_harjul`, `d_jual_qty`, `d_jual_diskon`, `d_jual_total`) VALUES
-(244, '191221000001', 'BR000001', 'Air Mineral', 'Kotak', 3000, 5000, 30, 0, 150000),
-(245, '191221000001', 'BR000002', 'Mie', 'Unit', 4999, 5000, 10, 0, 50000);
+
 
 -- --------------------------------------------------------
 
@@ -169,8 +167,7 @@ CREATE TABLE `tbl_jual` (
 -- Dumping data untuk tabel `tbl_jual`
 --
 
-INSERT INTO `tbl_jual` (`jual_nofak`, `jual_tanggal`, `jual_total`, `jual_jml_uang`, `jual_kembalian`, `jual_user_id`, `jual_keterangan`) VALUES
-('191221000001', '2021-12-19 11:46:41', 200000, 200000, 0, 1, 'eceran');
+
 
 -- --------------------------------------------------------
 

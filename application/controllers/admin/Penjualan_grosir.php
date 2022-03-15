@@ -149,6 +149,8 @@ class Penjualan_grosir extends CI_Controller
 	}
 	function simpan_penjualan_grosir()
 	{
+		// $nofak = $this->m_penjualan->get_nofak();
+		// var_dump($nofak);
 		if ($this->session->userdata('akses') == '1' || $this->session->userdata('akses') == '2') {
 			$total = $this->input->post('total');
 			$jml_uang = str_replace(",", "", $this->input->post('jml_uang'));
@@ -203,10 +205,10 @@ class Penjualan_grosir extends CI_Controller
 				'name'     => $i['barang_nama'],
 				'satuan'   => $i['barang_satuan'],
 				'harpok'   => $i['barang_harpok'],
-				'price'    => str_replace(",", "", $i['barang_harjul']) - $diskon,
+				'price'    => str_replace(",", "", $i['barang_harjul_grosir']) - $diskon,
 				'disc'     => $diskon,
 				'qty'      => $qty,
-				'amount'	  => str_replace(",", "", $i['barang_harjul'])
+				'amount'	  => str_replace(",", "", $i['barang_harjul_grosir'])
 			);
 
 			if (!empty($this->cart->total_items())) {
@@ -234,6 +236,8 @@ class Penjualan_grosir extends CI_Controller
 			echo 0;
 		}
 	}
+
+
 	function ambil_data()
 	{
 
@@ -284,8 +288,9 @@ class Penjualan_grosir extends CI_Controller
 			$this->db->like("barang_nama", $search);
 			$this->db->or_like("barang_id", $search);
 			$this->db->or_like("barang_kbarcode", $search);
-			$this->db->or_like("barang_satuan", $search);
+			// $this->db->or_like("barang_satuan", $search);
 			$this->db->or_like("barang_harjul", $search);
+			$this->db->or_like("barang_harjul_grosir", $search);
 			$this->db->or_like("barang_stok", $search);
 		}
 		/*Lanjutkan pencarian ke database*/
@@ -319,8 +324,9 @@ class Penjualan_grosir extends CI_Controller
 				$brng['barang_id'],
 				$brng['barang_kbarcode'],
 				$brng['barang_nama'],
-				$brng['barang_satuan'],
+				// $brng['barang_satuan'],
 				$brng['barang_harjul'],
+				$brng['barang_harjul_grosir'],
 				$brng['barang_stok'],
 				'<input type="number" name="diskon" id="diskon' . $brng['barang_id'] . '" value="0">',
 				'<input type="number" name="qty" id="qty' . $brng['barang_id'] . '"value="1" min="1" max="' . $brng['barang_stok'] . '" class="form-control input-sm" style="width:90px;margin-right:5px;" required>',

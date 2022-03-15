@@ -74,7 +74,7 @@
                 </tr> -->
                 <tr>
                     <th style="text-align:left;font-size: 12px;">Kasir</th>
-                    <th style="text-align:left;font-size: 12px;">: Gading</th>
+                    <th style="text-align:left;font-size: 12px;">: Kasir</th>
 
                 </tr>
                 <tr>

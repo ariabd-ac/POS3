@@ -191,7 +191,7 @@
                 </form>
 
 
-                <table class="tbl-custom" style="font-size:20px;margin-top:10px;font-color:black;">
+                <table class="tbl-custom" style="font-size:20px;margin-top:10px;color:black;">
                     <thead>
                         <tr>
                             <th>Kode Barang</th>
@@ -268,7 +268,7 @@
             <div class="row" style="height: 70px;">
                 <!-- <div class="col-lg-6">
             </div> -->
-                <div class="col-lg-12" style="background: #ffafcc; height: 90px; border-radius: 10px;">
+                <div class="col-lg-12" style="background: #eef0f7; height: 90px; border-radius: 10px;">
                     Keterangan :
                     <br />
                     <div class="row">
@@ -463,6 +463,9 @@
                 var total = $('#total').val();
                 var jumuang = $('#jml_uang').val();
                 var hsl = jumuang.replace(/[^\d]/g, "");
+                console.log('harjul', total)
+                console.log('qty', jumuang)
+                console.log('hsl', hsl)
                 $('#jml_uang2').val(hsl);
                 $('#kembalian').val(hsl - total);
             })
@@ -586,7 +589,9 @@
                     url: "<?php echo base_url() . 'admin/penjualan/get_barang'; ?>",
                     data: kobar,
                     success: function(msg) {
-                        $('#detail_barang').html(msg);
+                        setTimeout(() => {
+                            $('#detail_barang').html(msg);
+                        }, 1000);
                     }
                 });
             });
