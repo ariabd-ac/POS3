@@ -30,6 +30,13 @@ class Transaksi extends CI_Controller
     if ($this->session->userdata('akses') == '1') {
       $kode = $this->input->post('kode');
       $this->m_transaksi->soft_delete($kode);
+      $result = $this->m_transaksi->delete_tbl_detail_jual($kode);
+      if ($result) {
+        $rs = $this->m_transaksi->delete_tbl_jual($kode);
+        if ($rs) {
+          redirect('admin/transaksi');
+        }
+      }
       redirect('admin/transaksi');
     } else {
       echo "Halaman tidak ditemukan";
@@ -55,7 +62,6 @@ class Transaksi extends CI_Controller
         'd_jual_qty' => $this->input->post('qty2'),
         'd_jual_total ' => $this->input->post('total2'),
       );
-      var_dump($data);
       $this->db->set($data);
       $this->db->where('d_jual_nofak', $no_fak);
       $this->db->where('d_jual_barang_id', $kobar);

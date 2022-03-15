@@ -43,25 +43,25 @@ class M_penjualan extends CI_Model
 	}
 	function get_nofak($length = 10)
 	{
-		// $q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM tbl_jual WHERE DATE(jual_tanggal)=CURDATE()");
-		//     $kd = "";
-		//     if($q->num_rows()>0){
-		//         foreach($q->result() as $k){
-		//             $tmp = ((int)$k->kd_max)+1;
-		//             $kd = sprintf("%06s", $tmp);
-		//         }
-		//     }else{
-		//         $kd = "000001";
-		//     }
-		//     return date('dmy').$kd;
-		$number = '1234567890';
-		$numberLength = strlen($number);
-		$randomNumber = '';
-		$date = date("Ymd");
-		for ($i = 0; $i < $length; $i++) {
-			$randomNumber .= $number[rand(0, $numberLength - 1)];
+		$q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM tbl_jual WHERE DATE(jual_tanggal)=CURDATE()");
+		$kd = "";
+		if ($q->num_rows() > 0) {
+			foreach ($q->result() as $k) {
+				$tmp = ((int)$k->kd_max) + 1;
+				$kd = sprintf("%06s", $tmp);
+			}
+		} else {
+			$kd = "000001";
 		}
-		return $randomNumber .= $date;
+		return date('dmy') . $kd;
+		// $number = '1234567890';
+		// $numberLength = strlen($number);
+		// $randomNumber = '';
+		// $date = date("Ymd");
+		// for ($i = 0; $i < $length; $i++) {
+		// 	$randomNumber .= $number[rand(0, $numberLength - 1)];
+		// }
+		// return $randomNumber .= $date;
 		// var_dump($date);
 	}
 
@@ -91,7 +91,7 @@ class M_penjualan extends CI_Model
 	function cetak_faktur()
 	{
 		$nofak = $this->session->userdata('nofak');
-		$hsl = $this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
+		$hsl = $this->db->query("SELECT jual_nofak AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
 		return $hsl;
 	}
 }

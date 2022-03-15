@@ -370,7 +370,7 @@
         "pageLength": 50
       });
       $("table").rowspanizer({
-        columns: [0, 9, 11]
+        columns: [0, 11]
       });
 
 

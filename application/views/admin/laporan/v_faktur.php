@@ -25,7 +25,8 @@
     </style>
 </head>
 
-<body onload="window.print()">
+<body>
+    <!-- <body onload="window.print()"> -->
     <table style="border-collapse: collapse; width: 100%" border="0">
         <tr>
             <td align="center">
@@ -69,6 +70,7 @@
             </table>
             <?php
             $b = $data->row_array();
+            // var_dump($b);
             ?>
             <table border="0" align="center" style="width:320px;border:none;left:100px;">
                 <!-- <tr>

@@ -194,6 +194,8 @@ class Penjualan extends CI_Controller
 	{
 		$x['data'] = $this->m_penjualan->cetak_faktur();
 		$x['settings'] = $this->m_settings->tampil_settings();
+		// var_dump($x['data']);
+		// die;
 		$this->load->view('admin/laporan/v_faktur', $x);
 		//$this->session->unset_userdata('nofak');
 	}
