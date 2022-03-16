@@ -25,9 +25,10 @@
     </style>
 </head>
 
+<!-- <body onload="window.print()"> -->
+
 <body>
-    <!-- <body onload="window.print()"> -->
-    <table style="border-collapse: collapse; width: 100%" border="0">
+    <table style=" border-collapse: collapse; width: 100%" border="0">
         <tr>
             <td align="center">
                 <table style="border-collapse: collapse; width: 100%;" border="0">
@@ -37,6 +38,7 @@
                             <?php
                             // var_dump($settings->result_array())
                             $s = $settings->row_array();
+                            date_default_timezone_set('Asia/Jakarta');
                             ?>
                             <span style="font-size:  18pt;  font-weight:  bold;  color: black;"><?= $s['dep_name'] ?></span><br>
                             <span style="font-size: 17pt; font-weight: bold; font-style: italic;">
@@ -70,7 +72,6 @@
             </table>
             <?php
             $b = $data->row_array();
-            // var_dump($b);
             ?>
             <table border="0" align="center" style="width:320px;border:none;left:100px;">
                 <!-- <tr>
@@ -79,12 +80,12 @@
                 </tr> -->
                 <tr>
                     <th style="text-align:left;font-size: 12px;">Kasir</th>
-                    <th style="text-align:left;font-size: 12px;">: Kasir</th>
+                    <th style="text-align:left;font-size: 12px;">: <?= $this->session->userdata('nama') ?></th>
 
                 </tr>
                 <tr>
                     <th style="text-align:left;font-size: 12px;">Tanggal</th>
-                    <th style="text-align:left;font-size: 12px;">: <?php echo $b['jual_tanggal']; ?></th>
+                    <th style="text-align:left;font-size: 12px;text-transform:uppercase;">: <?php echo date("d/m/Y H:i:s") ?></th>
 
                 </tr>
                 <!-- <tr>

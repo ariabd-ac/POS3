@@ -66,6 +66,7 @@
             </table>
             <?php
             $b = $data->row_array();
+            date_default_timezone_set('Asia/Jakarta');
             ?>
             <table border="0" align="center" style="width:320px;border:none;left:100px;">
                 <!-- <tr>
@@ -74,12 +75,12 @@
                 </tr> -->
                 <tr>
                     <th style="text-align:left;font-size: 12px;">Kasir</th>
-                    <th style="text-align:left;font-size: 12px;">: Kasir</th>
+                    <th style="text-align:left;font-size: 12px;text-transform:uppercase;">: <?= $this->session->userdata('nama') ?></th>
 
                 </tr>
                 <tr>
                     <th style="text-align:left;font-size: 12px;">Tanggal</th>
-                    <th style="text-align:left;font-size: 12px;">: <?php echo $b['jual_tanggal']; ?></th>
+                    <th style="text-align:left;font-size: 12px;">: <?php echo date("d/m/Y H:i:s") ?></th>
 
                 </tr>
                 <!-- <tr>

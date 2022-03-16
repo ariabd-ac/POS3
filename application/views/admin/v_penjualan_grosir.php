@@ -325,14 +325,14 @@
 
             <!-- ============ MODAL ADD =============== -->
             <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg" style="width:1250px;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 class="modal-title" id="myModalLabel">Data Barang</h3>
                         </div>
                         <div class="modal-body" style="overflow:scroll;height:500px;">
-                            <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
+                            <table class="table table-bordered table-condensed" style="font-size:11px;width:100%;" id="mydata">
                                 <thead>
                                     <tr>
                                         <th style="text-align:center;width:40px;">No</th>

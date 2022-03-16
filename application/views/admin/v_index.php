@@ -107,6 +107,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-3 portfolio-item">
+                        <div class="menu-item green" style="height:150px;">
+                            <a href="<?php echo base_url() . 'admin/transaksi' ?>" data-toggle="modal">
+                                <i class="fa fa-bar-chart"></i>
+                                <p style="text-align:left;font-size:14px;padding-left:5px;">Settings Transaksi</p>
+                            </a>
+                        </div>
+                    </div>
                 <?php } ?>
                 <?php if ($h == '2') { ?>
                 <?php } ?>
@@ -117,14 +125,7 @@
             <!-- Projects Row -->
             <div class="row">
                 <?php if ($h == '1') { ?>
-                    <div class="col-md-3 portfolio-item">
-                        <div class="menu-item green" style="height:150px;">
-                            <a href="<?php echo base_url() . 'admin/transaksi' ?>" data-toggle="modal">
-                                <i class="fa fa-bar-chart"></i>
-                                <p style="text-align:left;font-size:14px;padding-left:5px;">Settings</p>
-                            </a>
-                        </div>
-                    </div>
+
                     <div class="col-md-3 portfolio-item">
                         <div class="menu-item red" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/pengguna' ?>" data-toggle="modal">
@@ -149,14 +150,14 @@
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="col-md-3 portfolio-item">
+                    <div class="col-md-3 portfolio-item">
                         <div class="menu-item light-red" style="height:150px;">
                             <a href="<?php echo base_url() . 'admin/pembelian' ?>" data-toggle="modal">
                                 <i class="fa fa-cubes"></i>
                                 <p style="text-align:left;font-size:14px;padding-left:5px;">Pembelian</p>
                             </a>
                         </div>
-                    </div> -->
+                    </div>
                 <?php } ?>
                 <?php if ($h == '2') { ?>
                     <div class="col-md-3 portfolio-item">
