@@ -187,7 +187,7 @@ class Barang extends CI_Controller
 			$delete = '<button type="button" name="' . $brng['barang_id'] . '" onclick="deleteData(this.name)" class="btn btn-xs btn-danger btn-delete" title="Delet"><span class="fa fa-edit"></span> Delete</button>';
 			// $barcode = '<button type="button" name="' . $brng['barang_kbarcode'] . '" onclick="showBarcode(this.name)" class="btn btn-xs btn-primary btn-delete" title="Barcode"><span class="fa fa-edit"></span> Barcode</button>';
 			$a = '<img src=site_url(`admin/barang/barcode/` ' . $brng['barang_id'] . '); ?>" alt="">';
-			$url = site_url('admin/barang/barcode/' . $brng['barang_id']);
+			$url = site_url('admin/barang/barcode/' . $brng['barang_kbarcode']);
 			// var_dump($)
 			$barcode = '<img src=' . $url . ' alt="">';
 
