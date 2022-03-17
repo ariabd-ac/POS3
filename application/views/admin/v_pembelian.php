@@ -38,10 +38,10 @@
                 <center><?php echo $this->session->flashdata('msg'); ?></center>
                 <h1 class="page-header">Pembelian
                     <small>Barang</small>
-                    <a href="#" data-toggle="modal" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a>
+                    <!-- <a href="#" data-toggle="modal" data-target="#largeModal" class="pull-right"><small>Cari Produk!</small></a> -->
 
                 </h1>
-                
+
             </div>
         </div>
         <!-- /.row -->
@@ -97,14 +97,14 @@
                             <th>Kode Barcode</th>
                         </tr>
                         <tr>
-                        <th><input type="text" name="kode_barcode" id="kode_barcode" class="form-control input-sm"></th>
+                            <th><input type="text" name="kode_barcode" id="kode_barcode" class="form-control input-sm"></th>
                         </tr>
-                
+
                         <div id="detail_barang" style="position:absolute;">
                         </div>
                     </table>
                 </form>
-                
+
                 <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
                     <thead>
                         <tr>
@@ -155,8 +155,8 @@
                         <h3 class="modal-title" id="myModalLabel">Data Barang</h3>
                     </div>
                     <div class="modal-body" style="overflow:scroll;height:500px;">
-                    
-                    <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
+
+                        <table class="table table-bordered table-condensed" style="font-size:11px;" id="mydata">
                             <thead>
                                 <tr>
                                     <th style="text-align:center;width:40px;">No</th>
@@ -270,7 +270,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#mydata').DataTable({
-                
+
             });
         });
     </script>
