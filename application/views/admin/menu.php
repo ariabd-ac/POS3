@@ -168,7 +168,7 @@
 
                 </div>
                 <!-- Bootstrap Core JavaScript -->
-                <!-- <script src="<?php echo base_url() . 'assets/js/jquery.js' ?>"></script> -->
+                <!-- <script src="<?php echo base_url() . 'assets/sjs/jquery.js' ?>"></script> -->
                 <script src="<?php echo base_url() . 'assets/dist/js/bootstrap-select.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/bootstrap.min.js' ?>"></script>
                 <script src="<?php echo base_url() . 'assets/js/dataTables.bootstrap.min.js' ?>"></script>
@@ -192,9 +192,11 @@
                     function editData(kode_barang) {
                         window.location.href = "<?php echo base_url() ?>admin/barang/edit_barang/" + kode_barang;
                         // alert(kode_barang);
+                    }
 
-
-
+                    function showBarcode(kode_barcde) {
+                        window.location.href = "<?php echo base_url() ?>admin/barang/Barcode/" + kode_barcde;
+                        // alert(kode_barang);
                     }
                 </script>
 
@@ -202,8 +204,6 @@
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
                     <button class="btn btn-info"><span class="fa fa-print"></span> Cetak</button>
                 </div>
-
-
             </form>
 
         </div>

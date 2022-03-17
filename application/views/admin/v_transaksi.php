@@ -331,9 +331,7 @@
         var harjul = $('#harjul').val();
         var qty = $('#qty').val();
         var hsl = qty.replace(/[^\d]/g, "");
-        console.log('harjul', harjul)
-        console.log('qty', qty)
-        console.log('hsl', hsl)
+
 
         $('#qty2').val(hsl);
         $('#total').val(hsl * harjul);

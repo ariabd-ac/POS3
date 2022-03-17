@@ -82,7 +82,7 @@
                                 <td><?php echo $nama_brg; ?></td>
                                 <td><?php echo $tgl_pembelian; ?></td>
                                 <td><?php echo $utang; ?></td>
-                                <td><?php echo $jatuh_tempo; ?></td>
+                                <td id="date_jatuh_tempo"><?php echo $jatuh_tempo; ?></td>
 
                                 <td style="text-align:center;">
                                     <a class="btn btn-xs btn-warning" href="#modalEditPelanggan<?php echo $id ?>" data-toggle="modal" title="Edit"><span class="fa fa-edit"></span> Edit</a>
@@ -365,6 +365,31 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#mydata').DataTable();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            let url = `https://api.whatsapp.com`
+            let phoneNumber = `6285291999977`
+            let msg = `Ada Jatuh Tempo`
+            let sendToWA = `${url}/send?phone=${phoneNumber}&text=${msg}`
+
+            $('#mydata tr').each(function() {
+                let djt = $(this).find("#date_jatuh_tempo").html();
+                let now = (new Date()).toISOString().split('T')[0];
+                console.log(djt < now)
+                if (djt < now) {
+                    window.open(sendToWA, '_blank')
+                }
+
+
+                // setInterval(() => {
+                //     console.log(djt)
+                // }, 1000);
+            });
+
         });
     </script>
 

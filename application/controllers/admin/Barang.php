@@ -1,4 +1,9 @@
 <?php
+
+// require '../../../assets/vendor/autoload.php';
+// require_once(APPPATH . 'assets/vendor/autoload.php');
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class Barang extends CI_Controller
 {
 	function __construct()
@@ -10,6 +15,7 @@ class Barang extends CI_Controller
 		};
 		$this->load->model('m_kategori');
 		$this->load->model('m_barang');
+		$this->load->library('Zend');
 	}
 	function index()
 	{
@@ -136,6 +142,8 @@ class Barang extends CI_Controller
 		$output['data'] = array();
 
 
+
+
 		/*Jika $search mengandung nilai, berarti user sedang telah 
 		memasukan keyword didalam filed pencarian*/
 		if ($search != "") {
@@ -167,13 +175,22 @@ class Barang extends CI_Controller
 		}
 
 
+		// load library barcode data
+
 
 		$nomor_urut = $start + 1;
+
 
 		foreach ($query->result_array() as $brng) {
 
 			$edit = '<button type="button" name="' . $brng['barang_id'] . '" onclick="editData(this.name)" class="btn btn-xs btn-info" title="Edit"><span class="fa fa-edit"></span> Edit</button>';
 			$delete = '<button type="button" name="' . $brng['barang_id'] . '" onclick="deleteData(this.name)" class="btn btn-xs btn-danger btn-delete" title="Delet"><span class="fa fa-edit"></span> Delete</button>';
+			// $barcode = '<button type="button" name="' . $brng['barang_kbarcode'] . '" onclick="showBarcode(this.name)" class="btn btn-xs btn-primary btn-delete" title="Barcode"><span class="fa fa-edit"></span> Barcode</button>';
+			$a = '<img src=site_url(`admin/barang/barcode/` ' . $brng['barang_id'] . '); ?>" alt="">';
+			$url = site_url('admin/barang/barcode/' . $brng['barang_id']);
+			// var_dump($)
+			$barcode = '<img src=' . $url . ' alt="">';
+
 
 			$output['data'][] = array(
 				$nomor_urut,
@@ -187,6 +204,8 @@ class Barang extends CI_Controller
 				$brng['barang_stok'],
 				$brng['barang_min_stok'],
 				$brng['barang_kategori_id'],
+				$barcode,
+				// $url,
 				$delete,
 				$edit,
 
@@ -197,5 +216,12 @@ class Barang extends CI_Controller
 
 
 		echo json_encode($output);
+	}
+
+
+	public function Barcode($kodenya)
+	{
+		$this->zend->load('Zend/Barcode');
+		Zend_Barcode::render('code128', 'image', array('text' => $kodenya));
 	}
 }
