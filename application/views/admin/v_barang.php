@@ -173,7 +173,7 @@
                             <th>Harga (Grosir)</th>
                             <th>Stok</th>
                             <th>Min Stok</th>
-                            <th>Kategori</th>
+                            <!-- <th>Kategori</th> -->
                             <th>Barcode</th>
                             <th style="width:100px;text-align:center;">Aksi</th>
                             <th style="width:100px;text-align:center;">Aksi</th>

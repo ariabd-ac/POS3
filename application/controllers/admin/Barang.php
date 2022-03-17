@@ -203,7 +203,7 @@ class Barang extends CI_Controller
 				$brng['barang_harjul_grosir'],
 				$brng['barang_stok'],
 				$brng['barang_min_stok'],
-				$brng['barang_kategori_id'],
+				// $brng['barang_kategori_id'],
 				$barcode,
 				// $url,
 				$delete,
