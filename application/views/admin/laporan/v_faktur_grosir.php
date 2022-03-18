@@ -7,6 +7,7 @@
     <style>
         * {
             margin-top: 0;
+            font-weight: bold;
         }
 
         td,
@@ -33,11 +34,15 @@
                     <tr>
                         <!-- <td style=""> -->
                         <td style="text-align: center;">
-
-                            <span style="font-size:  18pt;  font-weight:  bold;  color: black;">GV</span><br>
+                            <?php
+                            // var_dump($settings->result_array())
+                            $s = $settings->row_array();
+                            date_default_timezone_set('Asia/Jakarta');
+                            ?>
+                            <span style="font-size:  18pt;  font-weight:  bold;  color: black;"><?= $s['dep_name'] ?></span><br>
                             <span style="font-size: 17pt; font-weight: bold; font-style: italic;">
                                 <small style="font-size: small;">
-                                    Perempatan Psr Ketembreng TLP. 0815 6939 118
+                                    <?= $s['dep_address'] ?>. <?= $s['dep_phone'] ?>
                                 </small>
                             </span>
 
@@ -51,7 +56,7 @@
                 <tr>
                     <td>
                         <div>
-                            ----------------------------------------------------------------------------
+                            -------------------------------------------------------------------
                         </div>
                     </td>
                 </tr>
@@ -96,7 +101,7 @@
                 <tr>
                     <td>
                         <div>
-                            ----------------------------------------------------------------------------
+                            -------------------------------------------------------------------
                         </div>
                     </td>
                 </tr>
@@ -181,7 +186,15 @@
 
                     <tr>
                         <!-- <td align="left" style="font-size: xx-small;">Tegal, <?php echo date('d-M-Y') ?></td> -->
-                        <td align="left" style="font-size: small;">Terima kasih</td>
+                        <td align="center" style="font-size: small;">Terima kasih</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                -------------------------------------------------------------------
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td align="right"></td>

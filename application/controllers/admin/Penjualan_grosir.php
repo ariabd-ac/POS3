@@ -12,6 +12,7 @@ class Penjualan_grosir extends CI_Controller
 		$this->load->model('m_barang');
 		$this->load->model('m_suplier');
 		$this->load->model('m_penjualan');
+		$this->load->model('m_settings');
 	}
 	function index()
 	{
@@ -185,6 +186,7 @@ class Penjualan_grosir extends CI_Controller
 	function cetak_faktur_grosir()
 	{
 		$x['data'] = $this->m_penjualan->cetak_faktur();
+		$x['settings'] = $this->m_settings->tampil_settings();
 		$this->load->view('admin/laporan/v_faktur_grosir', $x);
 		//$this->session->unset_userdata('nofak');
 	}

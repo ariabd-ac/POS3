@@ -7,6 +7,7 @@
     <style>
         * {
             margin-top: 0;
+            font-weight: bold;
         }
 
         td,
@@ -25,9 +26,9 @@
     </style>
 </head>
 
-<!-- <body onload="window.print()"> -->
+<body onload="window.print()">
 
-<body>
+    <!-- <body> -->
     <table style=" border-collapse: collapse; width: 100%" border="0">
         <tr>
             <td align="center">
@@ -57,7 +58,7 @@
                 <tr>
                     <td>
                         <div>
-                            ----------------------------------------------------------------------------
+                            -------------------------------------------------------------------
                         </div>
                     </td>
                 </tr>
@@ -101,7 +102,7 @@
                 <tr>
                     <td>
                         <div>
-                            ----------------------------------------------------------------------------
+                            -------------------------------------------------------------------
                         </div>
                     </td>
                 </tr>
@@ -181,13 +182,27 @@
                     <td></td>
             </table>  -->
 
-                <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
+                <table align="center" style="border:none;margin-top:5px;margin-bottom:100px;">
                     <br />
 
                     <tr>
                         <!-- <td align="left" style="font-size: xx-small;">Tegal, <?php echo date('d-M-Y') ?></td> -->
-                        <td align="left" style="font-size: small;">Terima kasih</td>
+                        <td align="center" style="font-size: small;">Terima kasih</td>
+
                     </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                -------------------------------------------------------------------
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+
+
+
                     <tr>
                         <td align="right"></td>
                     </tr>
@@ -209,6 +224,8 @@
 
                     <td align="center"></td>
                     </tr>
+
+
                 </table>
                 <!-- <table align="center" style="border:none;margin-top:5px;margin-bottom:20px;">
                 <tr>
@@ -234,6 +251,7 @@
                     <tr>
                         <th align="left"></th>
                     </tr>
+
                 </table>
         </div>
 </body>
