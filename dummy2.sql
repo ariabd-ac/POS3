@@ -68,9 +68,7 @@ CREATE TABLE `tbl_barang` (
 -- Dumping data untuk tabel `tbl_barang`
 --
 
-INSERT INTO `tbl_barang` (`barang_id`, `barang_kbarcode`, `barang_nama`, `barang_satuan`, `barang_harpok`, `barang_harjul`, `barang_harjul_grosir`, `barang_stok`, `barang_min_stok`, `barang_tgl_input`, `barang_tgl_last_update`, `barang_kategori_id`, `barang_user_id`) VALUES
-('BR000001', '001', 'Air Mineral', 'Kotak', 3000, 5000, 6000, 70, 0, '2021-12-19 10:20:40', NULL, 68, 1),
-('BR000002', '002', 'Mie', 'Unit', 4999, 5000, 6000, 5990, 0, '2021-12-19 11:30:57', NULL, 69, 1);
+
 
 -- --------------------------------------------------------
 
@@ -103,8 +101,6 @@ CREATE TABLE `tbl_departmnet` (
 -- Dumping data untuk tabel `tbl_departmnet`
 --
 
-INSERT INTO `tbl_departmnet` (`dep_id`, `dep_name`, `dep_address`, `dep_phone`) VALUES
-(1, 'WM Kagok', 'Kagok', '123');
 
 -- --------------------------------------------------------
 
