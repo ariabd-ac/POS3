@@ -159,7 +159,7 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <form action="<?php echo base_url() . 'admin/penjualan/add_to_cart_kode_barcode' ?>" method="post">
+                <form action="<?php echo base_url() . 'admin/penjualan/add_to_cart_kode_barcode' ?>" method="post" autocomplete="off">
                     <table>
                         <tr>
                             <th style="width:100px;padding-bottom:5px;">Kasir</th>
