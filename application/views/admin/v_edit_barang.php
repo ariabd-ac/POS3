@@ -65,7 +65,7 @@
               <div class="form-group">
                 <label class="control-label col-xs-3">Kategori</label>
                 <div class="col-xs-9">
-                  <select id="kategori" name="kategori" class="selectpicker show-tick form-control" data-live-search="true" title="Pilih Kategori" data-width="80%" placeholder="Pilih Kategori" required>
+                  <select id="kategori" name="kategori" class="form-control" data-live-search="true" title="Pilih Kategori" data-width="80%" placeholder="Pilih Kategori" required>
                     <?php foreach ($kat2->result_array() as $k2) {
                       $id_kat = $k2['kategori_id'];
                       $nm_kat = $k2['kategori_nama'];
@@ -80,8 +80,8 @@
               <div class="form-group">
                 <label class="control-label col-xs-3">Satuan</label>
                 <div class="col-xs-9">
-                  <select id="satuan" name="satuan" class="selectpicker show-tick form-control" data-live-search="true" title="Pilih Satuan" data-width="80%" placeholder="Pilih Satuan" required>
-                    <option>Unit</option>
+                  <select id="satuan" name="satuan" class="form-control" data-live-search="true" title="Pilih Satuan" data-width="80%" placeholder="Pilih Satuan" required>
+                    <option selected="<?php echo $brng->barang_satuan ?>"><?php echo $brng->barang_satuan ?></option>
                     <option>Kotak</option>
                     <option>Botol</option>
                     <option>Butir</option>
@@ -110,6 +110,7 @@
                   </select>
                 </div>
               </div>
+
 
               <div class="form-group">
                 <label class="control-label col-xs-3">Harga Pokok</label>
