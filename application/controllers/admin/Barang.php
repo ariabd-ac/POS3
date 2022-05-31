@@ -63,8 +63,8 @@ class Barang extends CI_Controller
 			'barang_min_stok' => $this->input->post('min_stok'),
 
 		);
-		var_dump($data);
-		die;
+		// var_dump($data);
+		// die;
 		$this->db->set($data);
 		$this->db->where('barang_id', $kobar);
 		$result = $this->db->update('tbl_barang');
