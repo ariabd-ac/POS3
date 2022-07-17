@@ -81,7 +81,9 @@ class Barang extends CI_Controller
 			$data['detail_barang'] = $this->m_barang->get_barang($kode_barang)->result();
 			$data['kat'] = $this->m_kategori->tampil_kategori();
 			$data['kat2'] = $this->m_kategori->tampil_kategori();
-
+			$data['katName'] = $this->m_kategori->search_kategory($data['detail_barang'][0]->barang_kategori_id);
+// var_dump($data['katName']);
+// die;
 			$this->load->view('admin/v_edit_barang', $data);
 		} else {
 			echo 'err';

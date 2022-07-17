@@ -21,4 +21,9 @@ class M_kategori extends CI_Model{
 		return $hsl;
 	}
 
+	function search_kategory($id) {
+		$hsl=$this->db->query("SELECT * from tbl_kategori  where kategori_id='$id'");
+		return $hsl;
+	}
+
 }
