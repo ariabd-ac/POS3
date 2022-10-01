@@ -118,6 +118,8 @@ class Penjualan extends CI_Controller
 				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
 			);
 
+	
+
 			if (!empty($this->cart->total_items())) {
 				foreach ($this->cart->contents() as $items) {
 					$id = $items['id'];

@@ -65,17 +65,33 @@
               <div class="form-group">
                 <label class="control-label col-xs-3">Kategori</label>
                 <div class="col-xs-9">
-                  <select id="kategori" name="kategori" class="form-control" data-live-search="true" title="Pilih Kategori" data-width="80%" placeholder="Pilih Kategori" required>
+                <select id="kategori" name="kategori" class="form-control" data-live-search="true" title="Pilih Kategori" data-width="80%" placeholder="Pilih Kategori" required>
+                  <?php foreach($katName->result_array() as $knm) {
+                    $kname = $knm['kategori_nama'];
+                    $kid = $knm['kategori_id'];
+                    ?>
+                  <option value="<?=  $kid  ?>" selected="<?=  $kid  ?>"><?= $kname ?></option>
+
+                  <?php } ?>
+
+
                     <?php foreach ($kat2->result_array() as $k2) {
                       $id_kat = $k2['kategori_id'];
                       $nm_kat = $k2['kategori_nama'];
                     ?>
+                      
+                     
                       <option value="<?php echo $id_kat; ?>"><?php echo $nm_kat; ?></option>
+                      
+                      
                     <?php } ?>
 
                   </select>
+
                 </div>
               </div>
+
+              <!-- <?= var_dump($brng) ?> -->
 
               <div class="form-group">
                 <label class="control-label col-xs-3">Satuan</label>
@@ -151,7 +167,7 @@
             </div>
 
             <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+              <button class="btn" style="color:black;"><a href="<?php  echo base_url() ?>admin/barang" style="color:black;">Tutup</a></button>
               <button class="btn btn-info" type="submit">Update</button>
             </div>
           </form>

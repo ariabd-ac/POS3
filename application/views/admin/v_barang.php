@@ -106,6 +106,11 @@
                                     <option>Helai</option>
                                     <option>Gram</option>
                                     <option>Kilogram</option>
+                                    <option>Ikat</option>
+                                    <option>Gelas</option>
+                                    <option>Ons</option>
+                                    <option>Gram</option>
+                                    
                                 </select>
                             </div>
                         </div>
