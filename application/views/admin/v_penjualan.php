@@ -233,7 +233,7 @@
                 <form action="<?php echo base_url() . 'admin/penjualan/simpan_penjualan' ?>" method="post">
                     <table>
                         <tr>
-                            <td style="width:760px;" rowspan="4"></td>
+                            <td style="width:760px;" rowspan="5"></td>
                             <th style="width:140px;">Total Belanja(Rp)</th>
                             <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total()); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
                             <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total(); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
