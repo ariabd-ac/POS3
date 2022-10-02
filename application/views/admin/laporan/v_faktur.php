@@ -112,6 +112,8 @@
                     <tbody>
                         <?php
                         $no = 0;
+                        // var_dump($data);
+                        // die;
                         foreach ($data->result_array() as $i) {
                             $no++;
 
@@ -151,16 +153,34 @@
                         <tr>
                             <td style="text-align:right;font-size: 15px;">TOTAL</td>
                             <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
-                            <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_total']); ?></td>
+                            <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_total_before_pajak']); ?></td>
                             <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
                         </tr>
-
+                        <tr>
+                            <td style="text-align:right;font-size: 15px;">PPN</td>
+                            <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
+                            <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo $b['jual_pajak'] . '%' ?></td>
+                            <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
+                        </tr>
                         <tr>
                             <td style="text-align:right;font-size: 15px;">TUNAI</td>
                             <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
                             <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_jml_uang']); ?></td>
                             <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
+                        <tr>
+                            <td style="text-align:right;font-size: 15px;"></td>
+                            <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
+                            <td colspan="4" style="text-align:right;font-size: 15px;"></td>
+                            <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
                         </tr>
+                        <tr>
+                            <td style="text-align:right;font-size: 15px;">TOTAL + PPN</td>
+                            <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->
+                            <td colspan="4" style="text-align:right;font-size: 15px;"><?php echo 'Rp ' . number_format($b['jual_total']); ?></td>
+                            <!-- <td style="width:5px;font-size: 18px;"><b><?php echo 'Rp ' . number_format($b['jual_total']); ?></b></td> -->
+                        </tr>
+
+                       
                         <tr>
                             <td style="text-align:right;font-size: 15px;">KEMBALI</td>
                             <!-- <td colspan="4" style="width:5px;font-size: 18px;"><b>Total</b></td> -->

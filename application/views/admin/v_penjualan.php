@@ -233,7 +233,7 @@
                 <form action="<?php echo base_url() . 'admin/penjualan/simpan_penjualan' ?>" method="post">
                     <table>
                         <tr>
-                            <td style="width:760px;" rowspan="2"></td>
+                            <td style="width:760px;" rowspan="4"></td>
                             <th style="width:140px;">Total Belanja(Rp)</th>
                             <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total()); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
                             <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total(); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
@@ -244,10 +244,23 @@
                             <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                         </tr>
                         <tr>
+                            <th>Pajak (%)</th>
+                            <th style="text-align:right;"><input type="text" id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <input type="hidden" id="pajak2" name="pajak2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                        </tr>
+                       
+                      
+                        <tr>
+                            <th>Total + Pajak</th>
+                            <th style="text-align:right;"><input type="text" id="total_pajak2" name="total_pajak2" class="total_pajak2 form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <input type="hidden" id="total_pajak" name="total_pajak" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                        </tr>
+                        <tr>
                             <td></td>
                             <th>Kembalian(Rp)</th>
                             <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
                         </tr>
+                       
                         <br>
                         <tr>
                             <td></td>
@@ -462,12 +475,36 @@
             $('#jml_uang').on("input", function() {
                 var total = $('#total').val();
                 var jumuang = $('#jml_uang').val();
+                var pajak = $('#pajak').val();
+                let hsl_pajak = (total * pajak / 100) 
+                let hsl_pajak2 =  Math.ceil(hsl_pajak + Number(total))
                 var hsl = jumuang.replace(/[^\d]/g, "");
                 console.log('harjul', total)
                 console.log('qty', jumuang)
+                console.log('pajak', pajak)
+                console.log('hsl_pajak', hsl_pajak)
+                console.log('hsl_pajak2', hsl_pajak2)
                 console.log('hsl', hsl)
                 $('#jml_uang2').val(hsl);
-                $('#kembalian').val(hsl - total);
+                $('#kembalian').val(hsl - hsl_pajak2);
+                $$('#total_pajak2').val(String(hsl_pajak2));
+            })
+            $('#pajak').on("input", function() {
+                var total = $('#total').val();
+                var jumuang = $('#jml_uang').val();
+                var pajak = $('#pajak').val();
+                let hsl_pajak = (total * pajak / 100) 
+                let hsl_pajak2 = Math.ceil(hsl_pajak + Number(total))
+                var hsl = jumuang.replace(/[^\d]/g, "");
+                console.log('harjul', total)
+                console.log('qty', jumuang)
+                console.log('pajak', pajak)
+                console.log('hsl_pajak', hsl_pajak)
+                console.log('hsl_pajak2', String(hsl_pajak2))
+                console.log('hsl', hsl)
+                $('#jml_uang2').val(hsl);
+                $('#kembalian').val(hsl - hsl_pajak2);
+                $('#total_pajak2').val(String(hsl_pajak2));
             })
 
         });
@@ -563,6 +600,18 @@
                 thousandsSeparator: ','
             });
             $('.harjul').priceFormat({
+                prefix: '',
+                //centsSeparator: '',
+                centsLimit: 0,
+                thousandsSeparator: ','
+            });
+            $('.total_pajak').priceFormat({
+                prefix: '',
+                //centsSeparator: '',
+                centsLimit: 0,
+                thousandsSeparator: ','
+            });
+            $('.total_pajak2').priceFormat({
                 prefix: '',
                 //centsSeparator: '',
                 centsLimit: 0,
