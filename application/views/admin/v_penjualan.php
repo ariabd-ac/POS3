@@ -243,7 +243,7 @@
                      
                         <tr>
                             <th>Pajak (%)</th>
-                            <th style="text-align:right;"><input type="text" readonly disabled id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" value="5" required></th>
+                            <th style="text-align:right;"><input type="text" readonly id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" value="5" required></th>
                             <input type="hidden" id="pajak2" name="pajak2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                         </tr>
 
@@ -257,7 +257,7 @@
                             <th>Total + Pajak</th>
                             <th style="text-align:right;"><input type="text" id="total_pajak2" name="total_pajak2" class="total_pajak2 form-control input-sm" style="text-align:right;margin-bottom:5px;" required value="<?php echo number_format($this->cart->total() * 5 / 100 + $this->cart->total()); ?>"></th>
                             <!-- <input type="hidden" id="total_pajak" name="total_pajak" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required> -->
-                            <input type="hidden" id="total_pajak" name="total_pajak" value="<?php echo $this->cart->total(); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                            <input type="hidden" id="total_pajak" name="total_pajak" value="<?php echo number_format($this->cart->total() * 5 / 100 + $this->cart->total()); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
 
                         </tr>
                         <tr>

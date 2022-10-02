@@ -162,9 +162,10 @@ class Penjualan extends CI_Controller
 	function simpan_penjualan()
 	{
 		if ($this->session->userdata('akses') == '1' || $this->session->userdata('akses') == '2') {
-			$total = $this->input->post('total_pajak2');
+			$total_round = $this->input->post('total_pajak2');
 			$total_before_pajak = $this->input->post('total');
 			$pajak = $this->input->post('pajak');
+			$total = intval(preg_replace('/[^\d.]/', '', $total_round));
 			// var_dump($total);
 			// die;
 			$jml_uang = str_replace(",", "", $this->input->post('jml_uang'));
