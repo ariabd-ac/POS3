@@ -239,14 +239,16 @@
                             <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total(); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
                         </tr>
                         <tr>
-                            <th>Tunai(Rp)</th>
-                            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
-                            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
-                        </tr>
+                     
                         <tr>
                             <th>Pajak (%)</th>
                             <th style="text-align:right;"><input type="text" id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
                             <input type="hidden" id="pajak2" name="pajak2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                        </tr>
+
+                        <th>Tunai(Rp)</th>
+                            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                         </tr>
                        
                       
