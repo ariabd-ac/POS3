@@ -242,7 +242,7 @@
                      
                         <tr>
                             <th>Pajak (%)</th>
-                            <th style="text-align:right;"><input type="text" id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <th style="text-align:right;"><input type="text" id="pajak" name="pajak" class="pajak form-control input-sm" style="text-align:right;margin-bottom:5px;" value="5" required></th>
                             <input type="hidden" id="pajak2" name="pajak2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                         </tr>
 
@@ -344,6 +344,26 @@
                                     <th>:</th>
                                     <th>Scan barang</th>
                                 </tr>
+                            </table>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <table>
+                                <tr>
+                                    <th style="width:20%;">/</th>
+                                    <th>:</th>
+                                    <th style="width:100%">Pajak</th>
+                                </tr>
+                                <!-- <tr>
+                                    <th style="width:20px;">F11</th>
+                                    <th>:</th>
+                                    <th style="width:3px;">Full Screen</th>
+                                </tr>
+                                <tr>
+                                    <th>F5</th>
+                                    <th>:</th>
+                                    <th>Scan barang</th>
+                                </tr> -->
                             </table>
 
                         </div>
@@ -474,6 +494,17 @@
 
         }
         $(function() {
+            $('#pajak').on("input", function() {
+                var total = $('#total').val();
+                var pajak = $('#pajak').val();
+                let hsl_pajak = (total * pajak / 100) 
+                let hsl_pajak2 = Math.ceil(hsl_pajak + Number(total))
+                console.log('pajak', pajak)
+                console.log('hsl_pajak', hsl_pajak)
+                console.log('hsl_pajak2', String(hsl_pajak2))
+                $('#total_pajak2').val(String(hsl_pajak2));
+            })
+
             $('#jml_uang').on("input", function() {
                 var total = $('#total').val();
                 var jumuang = $('#jml_uang').val();
@@ -481,38 +512,27 @@
                 let hsl_pajak = (total * pajak / 100) 
                 let hsl_pajak2 =  Math.ceil(hsl_pajak + Number(total))
                 var hsl = jumuang.replace(/[^\d]/g, "");
-                console.log('harjul', total)
-                console.log('qty', jumuang)
+                // console.log('harjul', total)
+                // console.log('qty', jumuang)
                 console.log('pajak', pajak)
                 console.log('hsl_pajak', hsl_pajak)
                 console.log('hsl_pajak2', hsl_pajak2)
-                console.log('hsl', hsl)
-                $('#jml_uang2').val(hsl);
-                $('#kembalian').val(hsl - hsl_pajak2);
-                $$('#total_pajak2').val(String(hsl_pajak2));
-            })
-            $('#pajak').on("input", function() {
-                var total = $('#total').val();
-                var jumuang = $('#jml_uang').val();
-                var pajak = $('#pajak').val();
-                let hsl_pajak = (total * pajak / 100) 
-                let hsl_pajak2 = Math.ceil(hsl_pajak + Number(total))
-                var hsl = jumuang.replace(/[^\d]/g, "");
-                console.log('harjul', total)
-                console.log('qty', jumuang)
-                console.log('pajak', pajak)
-                console.log('hsl_pajak', hsl_pajak)
-                console.log('hsl_pajak2', String(hsl_pajak2))
-                console.log('hsl', hsl)
+                // console.log('hsl', hsl)
                 $('#jml_uang2').val(hsl);
                 $('#kembalian').val(hsl - hsl_pajak2);
                 $('#total_pajak2').val(String(hsl_pajak2));
             })
+            
 
         });
     </script>
     <script type="text/javascript">
         $(this).keydown(function(e) {
+
+            if (e.keyCode == 191) {
+                e.preventDefault();
+                $('#pajak').focus();
+            }
 
             if (e.keyCode == 114) {
                 e.preventDefault();
@@ -581,6 +601,7 @@
             });
         });
     </script>
+
     <script type="text/javascript">
         $(function() {
             $('.jml_uang').priceFormat({
@@ -595,6 +616,12 @@
                 centsLimit: 0,
                 thousandsSeparator: ''
             });
+            $('#total_pajak2').priceFormat({
+                prefix: '',
+                //centsSeparator: '',
+                centsLimit: 0,
+                thousandsSeparator: ','
+            });
             $('#kembalian').priceFormat({
                 prefix: '',
                 //centsSeparator: '',
@@ -607,13 +634,13 @@
                 centsLimit: 0,
                 thousandsSeparator: ','
             });
-            $('.total_pajak').priceFormat({
+            $('#total_pajak').priceFormat({
                 prefix: '',
                 //centsSeparator: '',
                 centsLimit: 0,
                 thousandsSeparator: ','
             });
-            $('.total_pajak2').priceFormat({
+            $('#total_pajak2').priceFormat({
                 prefix: '',
                 //centsSeparator: '',
                 centsLimit: 0,
