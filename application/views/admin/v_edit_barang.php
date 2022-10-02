@@ -123,6 +123,8 @@
                     <option>Helai</option>
                     <option>Gram</option>
                     <option>Kilogram</option>
+                    <option>Porsi</option>
+                    <option>Tusuk</option>
                   </select>
                 </div>
               </div>

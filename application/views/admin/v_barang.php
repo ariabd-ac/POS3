@@ -110,6 +110,8 @@
                                     <option>Gelas</option>
                                     <option>Ons</option>
                                     <option>Gram</option>
+                                    <option>Porsi</option>
+                                    <option>Tusuk</option>
                                     
                                 </select>
                             </div>
@@ -919,6 +921,63 @@
                                             <option>Helai</option>
                                             <option selected>Gram</option>
                                             <option>Kilogram</option>
+                                        <?php elseif ($satuan == 'Porsi') : ?>
+                                            <option>Unit</option>
+                                            <option>Kotak</option>
+                                            <option>Botol</option>
+                                            <option>Butir</option>
+                                            <option>Buah</option>
+                                            <option>Biji</option>
+                                            <option>Sachet</option>
+                                            <option>Bks</option>
+                                            <option>Roll</option>
+                                            <option>PCS</option>
+                                            <option>Box</option>
+                                            <option>Meter</option>
+                                            <option>Centimeter</option>
+                                            <option>Liter</option>
+                                            <option>CC</option>
+                                            <option>Mililiter</option>
+                                            <option>Lusin</option>
+                                            <option>Gross</option>
+                                            <option>Kodi</option>
+                                            <option>Rim</option>
+                                            <option>Dozen</option>
+                                            <option>Kaleng</option>
+                                            <option>Lembar</option>
+                                            <option>Helai</option>
+                                            <option selected>Gram</option>
+                                            <option>Kilogram</option>
+                                            <option>Porsi</option>
+                                        <?php elseif ($satuan == 'Tusuk') : ?>
+                                            <option>Unit</option>
+                                            <option>Kotak</option>
+                                            <option>Botol</option>
+                                            <option>Butir</option>
+                                            <option>Buah</option>
+                                            <option>Biji</option>
+                                            <option>Sachet</option>
+                                            <option>Bks</option>
+                                            <option>Roll</option>
+                                            <option>PCS</option>
+                                            <option>Box</option>
+                                            <option>Meter</option>
+                                            <option>Centimeter</option>
+                                            <option>Liter</option>
+                                            <option>CC</option>
+                                            <option>Mililiter</option>
+                                            <option>Lusin</option>
+                                            <option>Gross</option>
+                                            <option>Kodi</option>
+                                            <option>Rim</option>
+                                            <option>Dozen</option>
+                                            <option>Kaleng</option>
+                                            <option>Lembar</option>
+                                            <option>Helai</option>
+                                            <option selected>Gram</option>
+                                            <option>Kilogram</option>
+                                            <option>Porsi</option>
+                                            <option>Tusuk</option>
                                         <?php else : ?>
                                             <option>Unit</option>
                                             <option>Kotak</option>
@@ -945,6 +1004,7 @@
                                             <option>Lembar</option>
                                             <option>Helai</option>
                                             <option>Gram</option>
+                                            <option>Porsi</option>
                                             <option selected>Kilogram</option>
                                         <?php endif; ?>
                                     </select>
