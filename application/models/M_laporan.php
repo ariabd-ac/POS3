@@ -36,7 +36,25 @@ class M_laporan extends CI_Model
 
 	function get_data_jual_pertanggal($tanggal)
 	{
-		$hsl = $this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d %M %Y') AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE DATE(jual_tanggal)='$tanggal' ORDER BY jual_nofak DESC");
+		$hsl = $this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d %M %Y %H:%i:%s') AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE DATE(jual_tanggal)='$tanggal' ORDER BY jual_nofak DESC");
+		return $hsl;
+	}
+	function get_data_jual_pertanggal_pagi($tanggal, $tanggal_akhir)
+	{
+		// $hsl = $this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d %M %Y %H:%i:%s') AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE DATE(jual_tanggal)='$tanggal' ORDER BY jual_nofak DESC");
+		// var_dump($tanggal);
+		// die;
+		$hsl = $this->db->query("SELECT jual_nofak,
+															DATE_FORMAT(jual_tanggal,'%d-%m-%Y %H:%i:%s') 
+																AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total 
+																	FROM tbl_jual 
+																		JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak 
+																			WHERE 
+																				jual_tanggal >= '$tanggal' AND 
+																				jual_tanggal <= '$tanggal_akhir' 
+																			ORDER BY jual_nofak DESC");
+		// 	var_dump($hsl);
+		// die;
 		return $hsl;
 	}
 	function get_data_beli_pertanggal($tanggal)
@@ -47,6 +65,21 @@ class M_laporan extends CI_Model
 	function get_data__total_beli_pertanggal($tanggal)
 	{
 		$hsl = $this->db->query("SELECT beli_kode,DATE_FORMAT(beli_tanggal,'%d %M %Y') AS beli_nofak,beli_tanggal,d_beli_id,d_beli_nofak,d_beli_barang_id,d_beli_harga,d_beli_jumlah,SUM(d_beli_total) as total FROM tbl_beli JOIN tbl_detail_beli ON beli_kode=d_beli_kode WHERE DATE(beli_tanggal)='$tanggal' ORDER BY beli_kode DESC");
+		return $hsl;
+	}
+	function get_data__total_jual_pertanggal_pagi($tanggal, $tanggal_akhir)
+	{
+		// $hsl = $this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d %M %Y') AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,SUM(d_jual_total) as total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE DATE(jual_tanggal)='$tanggal' ORDER BY jual_nofak DESC");
+		$hsl = $this->db->query("SELECT jual_nofak,
+															DATE_FORMAT(jual_tanggal,'%d %M %Y') 
+																AS jual_tanggal,d_jual_barang_id,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harpok,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,
+																	SUM(d_jual_total) 
+																		as total 
+																			FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak 
+																				WHERE 
+																					jual_tanggal >= '$tanggal' AND 
+																					jual_tanggal <= '$tanggal_akhir' 
+																				ORDER BY jual_nofak DESC");
 		return $hsl;
 	}
 	function get_data__total_jual_pertanggal($tanggal)

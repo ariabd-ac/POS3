@@ -126,6 +126,14 @@
                             </td>
                         </tr>
 
+                        <tr>
+                            <td style="text-align:center;vertical-align:middle">8</td>
+                            <td style="vertical-align:middle;">Laporan Penjualan PerTanggal Pagi</td>
+                            <td style="text-align:center;">
+                                <a class="btn btn-sm btn-default" href="#lap_jual_pertanggal_pagi" data-toggle="modal"><span class="fa fa-print"></span> Print</a>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -310,6 +318,52 @@
         </div>
 
 
+        <!-- ============ MODAL ADD =============== -->
+        <div class="modal fade" id="lap_jual_pertanggal_pagi" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Pilih Tanggal</h3>
+                    </div>
+                    <form class="form-horizontal" method="post" action="<?php echo base_url() . 'admin/laporan/lap_penjualan_pertanggal_pagi' ?>" target="_blank">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Awal</label>
+                                <div class="col-xs-9">
+                                    <div class='input-group date' id='datepicker4' style="width:300px;">
+                                        <input type='text' name="tgl" class="form-control" value="" placeholder="Tanggal..." required />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Akhir</label>
+                                <div class="col-xs-9">
+                                    <div class='input-group date' id='datepicker5' style="width:300px;">
+                                        <input type='text' name="tgl_akhir" class="form-control" value="" placeholder="Tanggal..." required />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                            <button class="btn btn-info"><span class="fa fa-print"></span> Cetak</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!--END MODAL-->
 
         <hr>
@@ -351,6 +405,12 @@
             });
             $('#datepicker3').datetimepicker({
                 format: 'YYYY-MM-DD',
+            });
+            $('#datepicker4').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+            });
+            $('#datepicker5').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
             });
 
             $('#timepicker').datetimepicker({

@@ -45,6 +45,8 @@
 <tbody>
 <?php 
 $no=0;
+var_dump($data);
+die;
     foreach ($data->result_array() as $i) {
         $no++;
         $nofak=$i['jual_nofak'];
