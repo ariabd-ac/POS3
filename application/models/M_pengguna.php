@@ -4,6 +4,10 @@ class M_pengguna extends CI_Model{
 		$hsl=$this->db->query("SELECT * FROM tbl_user");
 		return $hsl;
 	}
+	function get_pengguna_kasir(){
+		$hsl=$this->db->query("SELECT * FROM tbl_user WHERE user_level='2'");
+		return $hsl;
+	}
 	function simpan_pengguna($nama,$username,$password,$level){
 		$hsl=$this->db->query("INSERT INTO tbl_user(user_nama,user_username,user_password,user_level,user_status) VALUES ('$nama','$username',md5('$password'),'$level','1')");
 		return $hsl;

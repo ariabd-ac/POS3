@@ -247,10 +247,7 @@
                             <input type="hidden" id="pajak2" name="pajak2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
                         </tr>
 
-                        <th>Tunai(Rp)</th>
-                            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
-                            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
-                        </tr>
+                      
                        
                       
                         <tr>
@@ -260,6 +257,12 @@
                             <input type="hidden" id="total_pajak" name="total_pajak" value="<?php echo number_format($this->cart->total() * 5 / 100 + $this->cart->total()); ?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
 
                         </tr>
+
+                        <th>Tunai(Rp)</th>
+                            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                        </tr>
+                        
                         <tr>
                             <td></td>
                             <th>Kembalian(Rp)</th>

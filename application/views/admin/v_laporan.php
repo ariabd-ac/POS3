@@ -128,7 +128,7 @@
 
                         <tr>
                             <td style="text-align:center;vertical-align:middle">8</td>
-                            <td style="vertical-align:middle;">Laporan Penjualan PerTanggal Pagi</td>
+                            <td style="vertical-align:middle;">Laporan Penjualan PerTanggal & Per Kasir</td>
                             <td style="text-align:center;">
                                 <a class="btn btn-sm btn-default" href="#lap_jual_pertanggal_pagi" data-toggle="modal"><span class="fa fa-print"></span> Print</a>
                             </td>
@@ -340,6 +340,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label class="control-label col-xs-3">Akhir</label>
                                 <div class="col-xs-9">
@@ -349,6 +350,22 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Kasir</label>
+                                <div class="col-xs-9">
+                                    <select name="uid" class="selectpicker show-tick form-control" data-live-search="true" title="Pilih Kasir" data-width="80%" placeholder="Pilih Kasir" required>
+                                        
+                                        <?php foreach ($users->result_array() as $k2) {
+                                            $id_kat = $k2['user_id'];
+                                            $nm_kat = $k2['user_nama'];
+                                        ?>
+                                            <option value="<?php echo $id_kat; ?>"><?php echo $nm_kat; ?></option>
+                                        <?php } ?>
+
+                                    </select>
                                 </div>
                             </div>
 

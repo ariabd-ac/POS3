@@ -14,6 +14,7 @@ class Laporan extends CI_Controller
 		$this->load->model('m_pembelian');
 		$this->load->model('m_penjualan');
 		$this->load->model('m_laporan');
+		$this->load->model('m_pengguna');
 	}
 	function index()
 	{
@@ -22,6 +23,7 @@ class Laporan extends CI_Controller
 			$data['kat'] = $this->m_kategori->tampil_kategori();
 			$data['jual_bln'] = $this->m_laporan->get_bulan_jual();
 			$data['jual_thn'] = $this->m_laporan->get_tahun_jual();
+			$data['users']=$this->m_pengguna->get_pengguna_kasir();
 			$this->load->view('admin/v_laporan', $data);
 		} else {
 			echo "Halaman tidak ditemukan";
@@ -67,8 +69,9 @@ class Laporan extends CI_Controller
 	{
 		$tanggal = $this->input->post('tgl');
 		$tanggal_akhir = $this->input->post('tgl_akhir');
-		$x['jml'] = $this->m_laporan->get_data__total_jual_pertanggal_pagi($tanggal, $tanggal_akhir);
-		$x['data'] = $this->m_laporan->get_data_jual_pertanggal_pagi($tanggal, $tanggal_akhir);
+		$uid = $this->input->post('uid');
+		$x['jml'] = $this->m_laporan->get_data__total_jual_pertanggal_pagi($tanggal, $tanggal_akhir, $uid);
+		$x['data'] = $this->m_laporan->get_data_jual_pertanggal_pagi($tanggal, $tanggal_akhir, $uid);
 		$this->load->view('admin/laporan/v_lap_jual_pertanggal', $x);
 	}
 	function lap_penjualan_perbulan()
